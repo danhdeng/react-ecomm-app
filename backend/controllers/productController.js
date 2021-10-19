@@ -18,10 +18,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     let product = await Product.findById(req.params.id);
     if (!product) {
-        return res.status(500).json({
-            success: false,
-            message: 'Product not found'
-        });
+        return next(new ErrorHandler('Product Not Found', 404));
     }
     product = await Product.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
@@ -39,10 +36,7 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
 exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     let product = await Product.findById(req.params.id);
     if (!product) {
-        return res.status(500).json({
-            success: false,
-            message: 'Product not found'
-        });
+        return next(new ErrorHandler('Product Not Found', 404));
     }
     await product.remove();
     res.status(200).json({
@@ -55,10 +49,6 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
     let product = await Product.findById(req.params.id);
     if (!product) {
-        // return res.status(500).json({
-        //     success: false,
-        //     message: 'Product not found'
-        // });
         return next(new ErrorHandler('Product Not Found', 404));
     }
     res.status(200).json({
@@ -67,10 +57,9 @@ exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
     });
 })
 
-
-
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
     const reslutPerPage = 5;
+    const productCount = await Product.countDocuments();
     const apifeatures = new ApiFeatures(Product.find(), req.query)
         .search()
         .filter()
@@ -80,6 +69,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        products
+        products,
+        productCount
     });
 });

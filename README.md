@@ -18,9 +18,12 @@ Frontend: React, Redux
 }
 
 # Price and Ratings filter
+
 price[gt]
 price[lt]
 price[gte]
 ratings[gt]
 ratings[lt]
 ratings[lte]
+
+# use multer library to handle images upload to nodejs server
