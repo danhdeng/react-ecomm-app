@@ -16,3 +16,11 @@ Frontend: React, Redux
         "url": "sampleiamgeUrl"
     }
 }
+
+# Price and Ratings filter
+price[gt]
+price[lt]
+price[gte]
+ratings[gt]
+ratings[lt]
+ratings[lte]
