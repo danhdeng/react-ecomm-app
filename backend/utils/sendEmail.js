@@ -6,10 +6,14 @@ const sendEmail = async (optins) => {
     const transporter = nodemailer.createTransport({
         host: process.env.SMPT_HOST,
         port: process.env.SMPT_PORT,
-        service: process.env.SMPT_SERVICE,
+        secure: false,
+        //service: process.env.SMPT_SERVICE,
         auth: {
             user: process.env.SMPT_MAIL,
             pass: process.env.SMPT_PASSWORD,
+        },
+        tls: {
+            rejectUnauthorized: false // avoid NodeJs self signed certificate error
         }
     });
 
