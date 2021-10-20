@@ -27,3 +27,10 @@ ratings[lt]
 ratings[lte]
 
 # use multer library to handle images upload to nodejs server
+
+yarn add multer
+
+# use built-in function uitls to show the reqeust cookie data in json format
+
+var util = require("util");
+console.log(util.inspect(req.cookies, {showHidden: false, depth: null}));

@@ -12,11 +12,11 @@ exports.registerUser= catchAsyncErrors(async (req, res, next) => {
 
     const user=await User.create({
         name,
-        mail,
+        email,
         password,
         avatar:{
-            public_id:"",
-            url:"",
+            public_id:"test",
+            url:"test",
         },
     });
     sendToken(user, 201, res);
@@ -36,7 +36,7 @@ exports.loginUser= catchAsyncErrors(async (req, res, next)=>{
     if(!user){
         return next(new ErrorHandler("Invalid Email or Password",401));
     }
-    const isPasswordMatched=await User.comparePassword(password);
+    const isPasswordMatched=await user.comparePassword(password);
     if(!isPasswordMatched){
         return next(new ErrorHandler("Invalid Email or Password",401));
     }
@@ -70,7 +70,6 @@ exports.forgotPassword= catchAsyncErrors(async (req, res, next) => {
     await user.save({validateBeforeSave: false});
     const resetPasswordUrl=`${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
 
-    const message=``;  
     const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
 
     try{
@@ -122,7 +121,7 @@ exports.resetPassword= catchAsyncErrors(async (req, res, next) => {
 
 //Get User Details
 exports.getUserDetails=catchAsyncErrors(async (req, res, next) => {
-    const user=await Users.find(req.user.id);
+    const user=await User.findById(req.user.id);
     if(!user){
         return next(new ErrorHandler(`User does not exist with id: ${req.params.id}`));
     }
