@@ -59,6 +59,7 @@ exports.logoutUser= catchAsyncErrors(async (req, res, next) => {
 
 //forgot password
 exports.forgotPassword= catchAsyncErrors(async (req, res, next) => {
+
     const user=await User.findOne({email: req.body.email});
 
     if(!user){
@@ -66,9 +67,9 @@ exports.forgotPassword= catchAsyncErrors(async (req, res, next) => {
     }
 
     //get resetPassword Token
-    const resetToken=User.getResetPasswordToken();
+    const resetToken=user.getResetPasswordToken();
     await user.save({validateBeforeSave: false});
-    const resetPasswordUrl=`${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
+    const resetPasswordUrl=`${req.protocol}://${req.get("host")}/api/v1/password/reset/${resetToken}`;
 
     const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
 
@@ -134,7 +135,7 @@ exports.getUserDetails=catchAsyncErrors(async (req, res, next) => {
 //Update User password
 exports.updatePassword=catchAsyncErrors(async (req, res, next) => {
     const user=await User.findById(req.user.id).select("+password");
-    const isPasswordMatched=await User.comparePassword(req.body.oldPassword);
+    const isPasswordMatched=await user.comparePassword(req.body.oldPassword);
     if(!isPasswordMatched){
         return next(new ErrorHandler("Old Password is incorrect",400));
     }

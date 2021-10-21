@@ -34,3 +34,17 @@ yarn add multer
 
 var util = require("util");
 console.log(util.inspect(req.cookies, {showHidden: false, depth: null}));
+
+# execute code onliness
+
+https://www.tutorialspoint.com/codingground.htm
+
+# execute nodejs onliness
+
+https://www.tutorialspoint.com/execute_nodejs_online.php
+
+# nodemailer get the link to preview the email
+
+ await transporter.sendMail(mailOptions).then(info=>{
+        console.log('Preview URL: ' + nodemailer.getTestMessageUrl(info));
+    });
