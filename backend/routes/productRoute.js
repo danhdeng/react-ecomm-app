@@ -26,6 +26,11 @@ router.route('/admin/product/:id')
     .put(isAuthenticatedUser, authorizeRoles('admin'), updateProduct)
     .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteProduct);
 
+router.route('/review')
+    .put(isAuthenticatedUser, createProductView);
 
+router.route('/reviews')
+    .get(getProductReviews)
+    .delete(isAuthenticatedUser, deleteReview);
 
 module.exports = router;
