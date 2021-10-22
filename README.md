@@ -48,3 +48,9 @@ https://www.tutorialspoint.com/execute_nodejs_online.php
  await transporter.sendMail(mailOptions).then(info=>{
         console.log('Preview URL: ' + nodemailer.getTestMessageUrl(info));
     });
+
+# libraries for Frontend
+
+yarn add axios react-alert react-alert-template-basic react-helmet react-redux redux redux-thunk redux-devtools-extension react-router-dom overlay-navbar
+
+yarn add react-icons
