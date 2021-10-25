@@ -56,3 +56,20 @@ yarn add axios react-alert react-alert-template-basic react-helmet react-redux r
 yarn add react-icons
 
 yarn add webfontloader
+
+# dynamic load google webfont in reactjs
+
+ useEffect(() =>{
+    webfont.load({
+      google:{
+        families:["Roboto", "Doroid Sans", "Chilanka"]
+      },
+    });
+  },[]);
+
+# bennett clippy css clippy-maker
+
+https://bennettfeely.com/clippy/
+
+
+

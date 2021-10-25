@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import webfont from 'webfontloader';
 import './App.css';
-import { Header } from './component/layout/Header.js';
+import { Header } from './component/layout/Header/Header.js';
 function App() {
   useEffect(() =>{
     webfont.load({
@@ -10,7 +10,7 @@ function App() {
         families:["Roboto", "Doroid Sans", "Chilanka"]
       },
     });
-  },[])
+  },[]);
   return (
     <Router>
       <Header />
