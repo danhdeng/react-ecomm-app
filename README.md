@@ -71,5 +71,9 @@ yarn add webfontloader
 
 https://bennettfeely.com/clippy/
 
+# Browserslist: caniuse-lite is outdated. Please run to update:
+
+npx browserslist@latest --update-db
+
 
 
