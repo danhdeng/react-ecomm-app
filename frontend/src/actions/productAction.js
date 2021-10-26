@@ -10,6 +10,7 @@ export const getProduct = () => async (dispatch) => {
         dispatch({ type: ALL_PRODUCT_REQUEST });
 
         const { data } = await axios.get("http://localhost:3333/api/v1/products");
+        console.log(data);
 
         dispatch({ type: ALL_PRODUCT_SUCCESS, payLoad: data, });
     }
