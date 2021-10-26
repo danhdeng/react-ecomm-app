@@ -75,5 +75,44 @@ https://bennettfeely.com/clippy/
 
 npx browserslist@latest --update-db
 
+# React Redux implementation
+
+1. config the redux store
+
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+const reducer = combineReducers({
+
+});
+
+let initialState = {};
+
+const middleware = [thunk];
+
+export const store = createStore(
+    reducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware))
+);
+
+2. add the store to the index.js file
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+// import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { store } from './store';
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+
 
 
