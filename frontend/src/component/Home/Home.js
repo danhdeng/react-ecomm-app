@@ -1,16 +1,15 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react';
 import { CgMouse } from 'react-icons/all';
-import "./Home.css";
-import { MetaData } from '../layout/MetaData';
-import { ProductCard } from './ProductCard';
+import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../actions/productAction';
+import { MetaData } from '../layout/MetaData';
+import "./Home.css";
+import { ProductCard } from './ProductCard';
 
-import { useSelector, useDispatch } from 'react-redux';
-import { useAlert } from 'react-alert';
 
 export const Home = () => {
     const dispatch = useDispatch();
-
+    const {loading, error, products}=useSelector(state => state.products)
     useEffect(() => {
         dispatch(getProduct());
     }, [dispatch]);
@@ -27,10 +26,10 @@ export const Home = () => {
                 </a>
             </div>
             <div className="container" id="container">
-                {/* {products &&
+                {products &&
                     products.map((product) => (
                         <ProductCard key={product._id} product={product} />
-                    ))} */}
+                    ))}
             </div>
         </Fragment>
     )

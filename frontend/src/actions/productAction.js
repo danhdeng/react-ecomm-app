@@ -1,10 +1,8 @@
-import {
-    ALL_PRODUCT_REQUEST,
-    ALL_PRODUCT_SUCCESS,
-    ALL_PRODUCT_FAILURE,
-    CLEAR_ERROR
-} from '../constants/productContants';
 import axios from 'axios';
+import {
+    ALL_PRODUCT_FAILURE, ALL_PRODUCT_REQUEST,
+    ALL_PRODUCT_SUCCESS, CLEAR_ERROR
+} from '../constants/productContants';
 
 
 export const getProduct = () => async (dispatch) => {
@@ -17,9 +15,10 @@ export const getProduct = () => async (dispatch) => {
     }
     catch (error) {
         console.log(error);
-        // dispatch({
-        //     type: ALL_PRODUCT_FAILURE,
-        // })
+        dispatch({
+            type: ALL_PRODUCT_FAILURE,
+            payLoad: error.response.data.message
+        })
     }
 }
 
