@@ -1,6 +1,6 @@
 import {
     ALL_PRODUCT_FAILURE, ALL_PRODUCT_REQUEST,
-    ALL_PRODUCT_SUCCESS, CLEAR_ERROR
+    ALL_PRODUCT_SUCCESS, CLEAR_ERRORS
 } from '../constants/productContants';
 
 export const productReducer = (state = { products: [] }, action) => {
@@ -21,7 +21,7 @@ export const productReducer = (state = { products: [] }, action) => {
                 loading: false,
                 error: action.payLoad
             }
-        case CLEAR_ERROR:
+        case CLEAR_ERRORS:
             return {
                 ...state,
                 error: null

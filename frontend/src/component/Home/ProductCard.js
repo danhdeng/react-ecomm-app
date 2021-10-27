@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
 import { Rating } from '@material-ui/lab';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const ProductCard = ({ product }) => {
     const options = {
-        value: product.ratings,
+        value: product.ratings.rate,
         realyOnly: true,
         precision: 0.5,
     };
