@@ -4,16 +4,40 @@ import {
     SAVE_SHIPPING_INFO
 } from '../constants/cartConstants';
 
-export const cartReducer = (state={cartItems:[], shippingInfo:{}}, action) => {
+export const cartReducer = (state = { cartItems: [], shippingInfo: {} }, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            return;
-        
+            const item = action.payLoad;
+            const isItemExists = state.cartItems.find(
+                (cartItem) => cartItem.product === item.product
+            );
+
+            if (isItemExists) {
+                return {
+                    ...state,
+                    cartItems: state.cartItems.map((cartItem) =>
+                        cartItem.product === isItemExists.product ? item : cartItem
+                    ),
+                }
+            } else {
+                return {
+                    ...state,
+                    cartItems: [...state.cartItems, item],
+                }
+            }
+
+
         case REMOVE_CART_ITEM:
-            return;
+            return {
+                ...state,
+                cartItems: state.cartItems.filter((cartItem) => cartItem.product !== item.product)
+            }
 
         case SAVE_SHIPPING_INFO:
-            return;
+            return {
+                ...state,
+                shippingInfo: action.payLoad
+            }
         default:
             return state;
     }
