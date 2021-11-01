@@ -29,7 +29,8 @@
     font: 300 1vmax "Roboto";
     transition: all 0.5s;
     cursor: pointer;
-    display: "-ms-grid";
+    display: -ms-grid;
+    display: grid;
     place-items: center;
     width: 100%;
 }
