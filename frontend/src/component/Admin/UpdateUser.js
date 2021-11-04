@@ -6,24 +6,24 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    clearErrors, getUserDetails,
-    updateUser
+  clearErrors, getUserDetails,
+  updateUser
 } from "../../actions/userAction";
 import { UPDATE_USER_RESET } from "../../constants/userConstants";
-import Loader from "../layout/Loader/Loader";
-import { MetaData } from '../layout/meta-data';
-import SideBar from "./Sidebar";
+import { Loader } from "../layout/Loader/Loader";
+import { MetaData } from '../layout/MetaData';
+import { SideBar } from "./SideBar";
 
-export const UpdateUser = ({history, match}) => {
-    const dispatch= useDispatch();
-    const alert = useAlert();
-    const {loading, error, user} =useSelector((state) => state.userDetails);
-    const {
-        loading:updateLoading,
-        error: updateError,
-        isUpdated
-    }=useSelector((state) => state.profile);
-    const [name, setName] = useState("");
+export const UpdateUser = ({ history, match }) => {
+  const dispatch = useDispatch();
+  const alert = useAlert();
+  const { loading, error, user } = useSelector((state) => state.userDetails);
+  const {
+    loading: updateLoading,
+    error: updateError,
+    isUpdated
+  } = useSelector((state) => state.profile);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
 
@@ -54,70 +54,70 @@ export const UpdateUser = ({history, match}) => {
     }
   }, [dispatch, alert, error, history, isUpdated, updateError, user, userId]);
 
-  const updateUserSubmitHandler = (e) =>{
-      e.preventDefault();
-      const myForm = new FormData();
-      myForm.set("name", name);
-      myForm.set("email", email);
-      myForm.set("role", role);
-  
-      dispatch(updateUser(userId, myForm));
-    };
-  
-    return (
-      <Fragment>
-          <MetaData title="Update User" />
-          <div className="dashboard">
-              <SideBar />
-              <div className="newProductContainer">
-                  {loading ? (<Loader />) :(
-                      <form className="createProductForm" onSubmit={updateUserSubmitHandler}>
-                            <h1>Update User</h1>
-                        <div>
-                        <PersonIcon />
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            required
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                        </div>
-                        <div>
-                        <MailOutlineIcon />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            required
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        </div>
+  const updateUserSubmitHandler = (e) => {
+    e.preventDefault();
+    const myForm = new FormData();
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("role", role);
 
-                        <div>
-                        <VerifiedUserIcon />
-                        <select value={role} onChange={(e) => setRole(e.target.value)}>
-                            <option value="">Choose Role</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
-                        </select>
-                        </div>
+    dispatch(updateUser(userId, myForm));
+  };
 
-                        <Button
-                            id="createProductBtn"
-                            type="submit"
-                            disabled={
-                                updateLoading ? true : false || role === "" ? true : false
-                            }   
-                        >
-                            Update
-                        </Button>
-                      </form>
-                  )
-
-                  }
+  return (
+    <Fragment>
+      <MetaData title="Update User" />
+      <div className="dashboard">
+        <SideBar />
+        <div className="newProductContainer">
+          {loading ? (<Loader />) : (
+            <form className="createProductForm" onSubmit={updateUserSubmitHandler}>
+              <h1>Update User</h1>
+              <div>
+                <PersonIcon />
+                <input
+                  type="text"
+                  placeholder="Name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
-          </div>
-      </Fragment>
-    );    
+              <div>
+                <MailOutlineIcon />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <VerifiedUserIcon />
+                <select value={role} onChange={(e) => setRole(e.target.value)}>
+                  <option value="">Choose Role</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+              </div>
+
+              <Button
+                id="createProductBtn"
+                type="submit"
+                disabled={
+                  updateLoading ? true : false || role === "" ? true : false
+                }
+              >
+                Update
+              </Button>
+            </form>
+          )
+
+          }
+        </div>
+      </div>
+    </Fragment>
+  );
 }

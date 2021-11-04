@@ -3,18 +3,18 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, forgotPassword } from '../../actions/userAction';
-import { Loader } from '../layout/load/loader';
+import { Loader } from '../layout/Loader/Loader';
 import { MetaData } from '../layout/MetaData';
-import './forgotPassword.css';
+import './ForgotPassword.css';
 
-export const ForgetPassword = () => {
+export const ForgotPassword = () => {
     const dispatch = useDispatch();
-    const alert=useAlert();
-    const {error, message, loading} = useSelector((state) => state.forgotPassword);
+    const alert = useAlert();
+    const { error, message, loading } = useSelector((state) => state.forgotPassword);
 
-    const [email, setEmail] =useState('');
+    const [email, setEmail] = useState('');
 
-    const forgotPasswordSubmit=(e) =>{
+    const forgotPasswordSubmit = (e) => {
         e.preventDefault();
 
         const myForm = new FormData();
@@ -23,14 +23,14 @@ export const ForgetPassword = () => {
     }
 
     useEffect(() => {
-        if(error) {
+        if (error) {
             alert(error);
             dispatch(clearErrors());
         }
-        if(message){
+        if (message) {
             alert.success(message);
         }
-    },[dispatch, error, alert, message]);
+    }, [dispatch, error, alert, message]);
     return (
         <Fragment>
             {loading ? (<Loader />) :
@@ -43,20 +43,20 @@ export const ForgetPassword = () => {
                                 <form className="forgotPasswordForm" onSubmit={forgotPasswordSubmit} >
                                     <div className="forgotPasswordEmail" >
                                         <MailOutlineIcon />
-                                        <input 
+                                        <input
                                             type="email"
                                             placeholder='Email'
                                             required
                                             name='email'
                                             value={email}
-                                            onChange={(e)=>setEmail(e.target.value)}
+                                            onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </div>
-                                    <input 
-                                            type='submit'
-                                            value='send'
-                                            class="forgotPasswordButton"
-                                        />
+                                    <input
+                                        type='submit'
+                                        value='send'
+                                        class="forgotPasswordButton"
+                                    />
                                 </form>
                             </div>
                         </div>

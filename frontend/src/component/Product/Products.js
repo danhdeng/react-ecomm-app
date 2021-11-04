@@ -7,9 +7,9 @@ import { clearErrors, getProduct } from '../../actions/productAction';
 import { ProductCard } from '../Home/ProductCard';
 import { Loader } from '../layout/Loader/Loader';
 import { MetaData } from '../layout/MetaData';
-import './product.css';
+import './Products.css';
 
-const categories=[
+const categories = [
     "Laptop",
     "Footwear",
     "Bottom",
@@ -18,48 +18,48 @@ const categories=[
     "Camera",
     "smartphones",
 ];
-export const Products = ({match}) => {
+export const Products = ({ match }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
-    const [currentPage, setCurrentPage] =useState(1);
-    const [price, setPrice] = useState(0,2500);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [price, setPrice] = useState(0, 2500);
     const [category, setCategory] = useState("");
     const [ratings, setRatings] = useState(0);
     const {
         products,
-        loading, 
+        loading,
         error,
         productsCount,
         resultPerPage,
         filteredProductsCount,
-    }=useSelector((state) => state.products);
+    } = useSelector((state) => state.products);
 
-    const keyword=match.params.keyword;
+    const keyword = match.params.keyword;
 
-    const setCurrentPageNo=(e)=>{
+    const setCurrentPageNo = (e) => {
         setCurrentPage(e);
     }
 
-    const priceHandler=(event, newPrice)=>{
+    const priceHandler = (event, newPrice) => {
         setPrice(newPrice);
     }
-    let count =filteredProductsCount;
+    let count = filteredProductsCount;
     useEffect(() => {
-        if(error){
+        if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-        dispatch(getProduct(keyword,currentPage, price, category, ratings));
-    },[dispatch,keyword,currentPage, price, category, ratings, alert, error]);
+        dispatch(getProduct(keyword, currentPage, price, category, ratings));
+    }, [dispatch, keyword, currentPage, price, category, ratings, alert, error]);
     return (
         <Fragment>
-            {loading ?(<Loader />):(
+            {loading ? (<Loader />) : (
                 <Fragment>
                     <MetaData title="PRODUCTS -- ECOMMERCE" />
                     <h2 className="productsHeading">Products</h2>
                     <div className="products">
                         {products &&
-                            products.map((product)=>(
+                            products.map((product) => (
                                 <ProductCard key={product._id} product={product} />
                             ))
                         }
@@ -76,21 +76,21 @@ export const Products = ({match}) => {
                         />
                         <Typography>Categories</Typography>
                         <ul className="categoryBox">
-                            {categories.map((category)=>(
-                                <li 
+                            {categories.map((category) => (
+                                <li
                                     className="category-link"
                                     key={category}
-                                    onClick={()=>setCategory(category)}
-                                    >
-                                        {category}
+                                    onClick={() => setCategory(category)}
+                                >
+                                    {category}
                                 </li>
                             ))}
                         </ul>
                         <fieldset>
                             <Typography component="legend">Ratings Above</Typography>
-                            <Slider 
+                            <Slider
                                 value={ratings}
-                                onChange={(e,newRating)=>setRatings(newRating)}
+                                onChange={(e, newRating) => setRatings(newRating)}
                                 aria-labelledby="continuous-slider"
                                 valueLabelDisplay="auto"
                                 min={0}
@@ -100,7 +100,7 @@ export const Products = ({match}) => {
                     </div>
                     {resultPerPage < count && (
                         <div className="paginationBox">
-                            <Pagination 
+                            <Pagination
                                 activePage={currentPage}
                                 itemsCountPerPage={resultPerPage}
                                 totalItemsCount={productsCount}

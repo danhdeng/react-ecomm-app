@@ -7,7 +7,7 @@ import {
     MY_ORDERS_FAILURE,
     ALL_ORDERS_REQUEST,
     ALL_ORDERS_SUCCESS,
-    ALL_ORDERS_FAIL,
+    ALL_ORDERS_FAILURE,
     UPDATE_ORDER_REQUEST,
     UPDATE_ORDER_SUCCESS,
     UPDATE_ORDER_FAILURE,
@@ -127,8 +127,8 @@ export const orderReducer = (state = {}, action) => {
                 loading: false,
                 isDeleted: action.payLoad,
             }
-        case UPDATE_ORDERS_FAILURE:
-        case DELETE_ORDERS_FAILURE:
+        case UPDATE_ORDER_FAILURE:
+        case DELETE_ORDER_FAILURE:
             return {
                 loading: false,
                 error: action.payLoad

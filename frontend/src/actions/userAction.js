@@ -15,8 +15,7 @@ import {
     UPDATE_PASSWORD_SUCCESS, UPDATE_PROFILE_FAILURE, UPDATE_PROFILE_REQUEST,
     UPDATE_PROFILE_SUCCESS, UPDATE_USER_FAILURE, UPDATE_USER_REQUEST,
     UPDATE_USER_SUCCESS, USER_DETAILS_FAILURE, USER_DETAILS_REQUEST,
-    USER_DETAILS_SUCCESS,
-    ALL_USERS_FAILURE
+    USER_DETAILS_SUCCESS
 } from "../constants/userConstants";
 
 //Login
@@ -169,7 +168,7 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
 };
 
 //Get All Users
-export const getAllUser = () => async (dispatch) => {
+export const getAllUsers = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_USERS_REQUEST });
         const { data } = await axios.get(`/api/v1/admin/users`);

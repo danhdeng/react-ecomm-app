@@ -27,7 +27,7 @@ import { Contact } from "./component/layout/Contact/Contact";
 import { Footer } from './component/layout/Footer/Footer.js';
 import { Header } from './component/layout/Header/Header.js';
 import { UserOptions } from './component/layout/Header/UserOptions';
-import { NotFound } from "./component/layout/Not Found/NotFound";
+import { NotFound } from "./component/layout/NotFound/NotFound";
 import { MyOrders } from "./component/Order/MyOrders";
 import { OrderDetails } from "./component/Order/OrderDetails";
 import { ProductDetails } from './component/Product/ProductDetails';
@@ -44,11 +44,11 @@ import { store } from './store';
 
 
 function App() {
-  const {isAuthenticated, user}=useSelector((state) =>state.user);
-  const [stripeApiKey, setStripeApiKey] =useState("");
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey(){
-    const {data}=await axios.get("/api/v1/stripeaipkey");
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/v1/stripeaipkey");
     setStripeApiKey(data.stripeApiKey);
   }
   useEffect(() => {
@@ -60,8 +60,8 @@ function App() {
     store.dispatch(loadUser());
     getStripeApiKey();
   }, []);
-  
-  window.addEventListener("contextmenu", (e)=>e.preventDefault());
+
+  window.addEventListener("contextmenu", (e) => e.preventDefault());
 
   return (
     <Router>
@@ -73,7 +73,7 @@ function App() {
         </Elements>
       )}
       <Switch>
-      <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/product/:id" component={ProductDetails} />
         <Route exact path="/products" component={Products} />
         <Route path="/products/:keyword" component={Products} />

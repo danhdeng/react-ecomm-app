@@ -10,14 +10,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, getProductDetails, updateProduct } from '../../actions/productAction';
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import { MetaData } from '../layout/MetaData';
-import SideBar from "./Sidebar";
+import { SideBar } from "./SideBar";
 
-export const UpdateProduct = ({history, match}) => {
-    const dispatch = useDispatch();
-    const alert=useAlert();
-    const {error, product} =useSelector((state) => state.productDetails);
-    const {loading, error:updateError, isUpdated} =useSelector((state) => state.producto);
-    const [name, setName] = useState("");
+export const UpdateProduct = ({ history, match }) => {
+  const dispatch = useDispatch();
+  const alert = useAlert();
+  const { error, product } = useSelector((state) => state.productDetails);
+  const { loading, error: updateError, isUpdated } = useSelector((state) => state.producto);
+  const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -35,38 +35,38 @@ export const UpdateProduct = ({history, match}) => {
     "Camera",
     "SmartPhones",
   ];
-  const productId=match.params.id;
+  const productId = match.params.id;
 
   useEffect(() => {
-      if(product && product._id !==productId){
-          dispatch(getProductDetails(productId));
-      }else{
-          setName(product.name);
-          setDescription(product.description);
-          setPrice(product.price);
-          setCategory(product.category);
-          setStock(product.Stock);
-          setOldImages(product.images);
-      }
-      if(error){
-          alert.error(error);
-          dispatch(clearErrors());
-      }
-      if(updateError){
-          alert.error(updateError);
-          dispatch(clearErrors());
-      }
-      if(isUpdated){
-          alert.success("Product Update Successfully");
-          history.push('/admin/products');
-          dispatch({type: UPDATE_PRODUCT_RESET});
-      }
-  },[dispatch, error, alert,history, isUpdated,productId,product,updateError]);
+    if (product && product._id !== productId) {
+      dispatch(getProductDetails(productId));
+    } else {
+      setName(product.name);
+      setDescription(product.description);
+      setPrice(product.price);
+      setCategory(product.category);
+      setStock(product.Stock);
+      setOldImages(product.images);
+    }
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    if (updateError) {
+      alert.error(updateError);
+      dispatch(clearErrors());
+    }
+    if (isUpdated) {
+      alert.success("Product Update Successfully");
+      history.push('/admin/products');
+      dispatch({ type: UPDATE_PRODUCT_RESET });
+    }
+  }, [dispatch, error, alert, history, isUpdated, productId, product, updateError]);
 
-  const updateProductSubmitHandler=(e)=>{
-      e.preventDefault();
-      const myForm = new FormData();
-      myForm.set("name", name);
+  const updateProductSubmitHandler = (e) => {
+    e.preventDefault();
+    const myForm = new FormData();
+    myForm.set("name", name);
     myForm.set("price", price);
     myForm.set("description", description);
     myForm.set("category", category);
@@ -78,7 +78,7 @@ export const UpdateProduct = ({history, match}) => {
     dispatch(updateProduct(productId, myForm));
   };
 
-  const updateProductImagesChange=(e)=>{
+  const updateProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
 
     setImages([]);
@@ -99,29 +99,29 @@ export const UpdateProduct = ({history, match}) => {
     });
   };
 
-    return (
-        <Fragment>
-            <MetaData title="Create Product" />
-            <div className="dashboard">
-                <SideBar />
-                <div className="newProductContainer">
-                    <form 
-                        className="newProdcutForm"
-                        encType="multipart/form-data"
-                        onSubmit={updateProductSubmitHandler}
-                    >
-                        <h1>Create Product</h1>
-                        <div>
-                            <SpellcheckIcon />
-                            <input 
-                                type="text"
-                                placeholder="Product Name"
-                                required
-                                value={name}
-                                onChange={(e) =>setName(e.target.value)}
-                            />
-                        </div>
-                        <div>
+  return (
+    <Fragment>
+      <MetaData title="Create Product" />
+      <div className="dashboard">
+        <SideBar />
+        <div className="newProductContainer">
+          <form
+            className="newProdcutForm"
+            encType="multipart/form-data"
+            onSubmit={updateProductSubmitHandler}
+          >
+            <h1>Create Product</h1>
+            <div>
+              <SpellcheckIcon />
+              <input
+                type="text"
+                placeholder="Product Name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
               <AttachMoneyIcon />
               <input
                 type="number"

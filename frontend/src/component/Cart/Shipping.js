@@ -11,12 +11,13 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import TransferWithinAStationIcon from "@material-ui/icons/TransferWithinAStation";
 import { Country, State } from "country-state-city";
 import { useAlert } from "react-alert";
-import { CheckoutSteps } from "../Cart/CaheckoutSteps";
+import { CheckoutSteps } from "../Cart/CheckoutSteps";
 export const Shipping = ({ history }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const { shippingInfo } = useSelector((state) => state.cart);
 
+    const [address, setAddress] = useState(shippingInfo.address);
     const [city, setCity] = useState(shippingInfo.city);
     const [state, setState] = useState(shippingInfo.state);
     const [country, setCountry] = useState(shippingInfo.country);
@@ -95,7 +96,7 @@ export const Shipping = ({ history }) => {
                                 <option value="">Country</option>
                                 {
                                     Country && Country.getAllCountries().map((item) => (
-                                        <option key={item.isoCode} value={isoCode}>{item.name}</option>
+                                        <option key={item.isoCode} value={item.isoCode}>{item.name}</option>
                                     ))
                                 }
                             </select>
@@ -111,7 +112,7 @@ export const Shipping = ({ history }) => {
                                     <option value="">State</option>
                                     {
                                         State && State.getStateOfCountry(country).map((item) => (
-                                            <option key={item.isoCode} value={isoCode}>{item.name}</option>
+                                            <option key={item.isoCode} value={item.isoCode}>{item.name}</option>
                                         ))
                                     }
                                 </select>

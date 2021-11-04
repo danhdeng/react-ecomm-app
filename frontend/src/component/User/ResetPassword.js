@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import './resetPassword.css';
+import './ResetPassword.css';
 import { Loader } from '../layout/Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, resetPassword } from '../../actions/userAction';
@@ -64,8 +64,8 @@ export const ResetPassword = ({ history, match }) => {
                                                 type="password"
                                                 placeholder="Confirm Password"
                                                 required
-                                                value={confirmPassword}
-                                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                                value={confirmedPassword}
+                                                onChange={(e) => setConfirmedPassword(e.target.value)}
                                             />
                                         </div>
                                         <input

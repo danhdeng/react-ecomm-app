@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { clearErrors, myOrders } from '../../actions/orderAction';
 import { Loader } from '../layout/Loader/Loader';
-import MetaData from '../layout/MetaData';
+import { MetaData } from '../layout/MetaData';
 import './myOrders.css';
 
-export const MyOrder = () => {
+export const MyOrders = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
 

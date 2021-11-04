@@ -2,6 +2,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ListAltIcon from "@material-ui/icons/ListAlt";
+import PersontIcon from "@material-ui/icons/Person";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { SpeedDial, SpeedDialAction } from '@material-ui/lab';
 import React, { Fragment, useState } from 'react';
@@ -12,72 +13,72 @@ import { logout } from '../../../actions/userAction';
 import './Header.css';
 
 
-export const UserOptions = ({user}) => {
-    const {cartItems} =useSelector((state) => state.cart);
-    const [open, setOpen]= useState(false);
-    const history=useHistory();
-    const alert=useAlert();
+export const UserOptions = ({ user }) => {
+    const { cartItems } = useSelector((state) => state.cart);
+    const [open, setOpen] = useState(false);
+    const history = useHistory();
+    const alert = useAlert();
     const dispatch = useDispatch();
-    const options=[
-        {icon:<ListAltIcon />, name:"Orders", func:orders},
-       { icon:<PersontIcon />, name:"Profile", func:account},
-       { icon:<ShoppingCartIcon style={{color: cartItems.length>0 ? "tomato":"unset"}} />, name:`Cart(${cartItems.length})`, func:cart},
-       { icon:<ExitToAppIcon />, name:"Logout", func:logoutUser},
+    const options = [
+        { icon: <ListAltIcon />, name: "Orders", func: orders },
+        { icon: <PersontIcon />, name: "Profile", func: account },
+        { icon: <ShoppingCartIcon style={{ color: cartItems.length > 0 ? "tomato" : "unset" }} />, name: `Cart(${cartItems.length})`, func: cart },
+        { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
     ];
 
-    if(user.role==="admin"){
+    if (user.role === "admin") {
         options.unshift({
-            icon: <DashboardIcon />, 
-            name:"Dashboard", 
-            func:dashboard,
+            icon: <DashboardIcon />,
+            name: "Dashboard",
+            func: dashboard,
         });
     }
 
-    function dashboard(){
+    function dashboard() {
         history.push("/admin/dashboard");
     }
-    function orders(){
+    function orders() {
         history.push("/orders");
     }
-    function account(){
+    function account() {
         history.push("/account");
     }
-    function cart(){
+    function cart() {
         history.push("/cart");
     }
-    function logoutUser(){
+    function logoutUser() {
         dispatch(logout());
         alert.success("Logout Successfully");
     }
-    
+
     return (
         <Fragment   >
-            <Backdrop open={open} style={{zIndex:"10"}} />
-            <SpeedDial 
+            <Backdrop open={open} style={{ zIndex: "10" }} />
+            <SpeedDial
                 ariaLabel='SpeedDial tooltip'
-                onClose={()=>setOpen(false)}
-                onOpen={()=>setOpen(true)}
-                style={{zIndex:"11"}}
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                style={{ zIndex: "11" }}
                 open={open}
                 direction='down'
                 className="speedDial"
                 icon={
-                    <img 
+                    <img
                         className="speedDialIcon"
-                        src={user.avatar.url ? user.avatar.url :"/Profile.png"}
+                        src={user.avatar.url ? user.avatar.url : "/Profile.png"}
                         alt="Profile"
                     />
                 }
             >
                 {
-                    options.map((item)=>(
-                        <SpeedDialAction 
+                    options.map((item) => (
+                        <SpeedDialAction
                             key={item.name}
                             icon={item.icon}
                             tooltipTitle={item.name}
                             onClick={item.func}
-                            tooltipOpen={window.innerWidth<=600?true:false}
-                        />        
+                            tooltipOpen={window.innerWidth <= 600 ? true : false}
+                        />
                     ))
                 }
             </SpeedDial>

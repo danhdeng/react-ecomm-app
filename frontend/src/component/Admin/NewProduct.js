@@ -11,66 +11,66 @@ import { clearErrors, createProduct } from '../../actions/productAction';
 import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 import { MetaData } from '../layout/MetaData';
 import './NewProduct.css';
-import { SideBar } from "./Sidebar";
-export const NewProduct = ({history}) => {
+import { SideBar } from "./SideBar";
+export const NewProduct = ({ history }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
-    const {loading, error, success}= useSelector((state) => state.newProdcut);
+    const { loading, error, success } = useSelector((state) => state.newProdcut);
     const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [Stock, setStock] = useState(0);
-  const [images, setImages] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
-  const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
-  ];
-  useEffect(() => {
-      if(error){
-          alert.error(error);
-          dispatch(clearErrors());
-      }
-      if(success){
-          alert.success("Product created successfully");
-          history.push("/admin/dashboard");
-          dispatch({type: NEW_PRODUCT_RESET});
-      }
-  },[dispatch, error, alert, history, success]);
-
-  const createProductSubmitHandler=(e)=>{
-    e.preventDefault();
-    const myForm = new FormData();
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
-    myForm.set("category", category);
-    myForm.set("Stock", Stock);
-
-    images.forEach((image) => {
-      myForm.append("images", image);
-    });
-    dispatch(createProduct(myForm));
-  };
-  const createProductImagesChange=(e)=>{
-      const files=Array.from(e.target.files);
-      setImages([]);
-      setImagesPreview([]);
-      files.forEach((file)=>{
-        const reader = new FileReader();
-        if(reader.readyState===2){
-            setImagesPreview((old)=>[...old, reader.result]);
-            setImages((old)=>[...old, reader.result]);
+    const [price, setPrice] = useState(0);
+    const [description, setDescription] = useState("");
+    const [category, setCategory] = useState("");
+    const [Stock, setStock] = useState(0);
+    const [images, setImages] = useState([]);
+    const [imagesPreview, setImagesPreview] = useState([]);
+    const categories = [
+        "Laptop",
+        "Footwear",
+        "Bottom",
+        "Tops",
+        "Attire",
+        "Camera",
+        "SmartPhones",
+    ];
+    useEffect(() => {
+        if (error) {
+            alert.error(error);
+            dispatch(clearErrors());
         }
-        reader.readAsDataURL(file);
-      });
-  };
+        if (success) {
+            alert.success("Product created successfully");
+            history.push("/admin/dashboard");
+            dispatch({ type: NEW_PRODUCT_RESET });
+        }
+    }, [dispatch, error, alert, history, success]);
+
+    const createProductSubmitHandler = (e) => {
+        e.preventDefault();
+        const myForm = new FormData();
+        myForm.set("name", name);
+        myForm.set("price", price);
+        myForm.set("description", description);
+        myForm.set("category", category);
+        myForm.set("Stock", Stock);
+
+        images.forEach((image) => {
+            myForm.append("images", image);
+        });
+        dispatch(createProduct(myForm));
+    };
+    const createProductImagesChange = (e) => {
+        const files = Array.from(e.target.files);
+        setImages([]);
+        setImagesPreview([]);
+        files.forEach((file) => {
+            const reader = new FileReader();
+            if (reader.readyState === 2) {
+                setImagesPreview((old) => [...old, reader.result]);
+                setImages((old) => [...old, reader.result]);
+            }
+            reader.readAsDataURL(file);
+        });
+    };
     return (
         <Fragment>
             <MetaData title="Create Product" />
@@ -85,22 +85,22 @@ export const NewProduct = ({history}) => {
                         <h1>Create Product</h1>
                         <div>
                             <SpellcheckIcon />
-                            <input 
+                            <input
                                 type="text"
                                 placeholder="Product Name"
                                 required
                                 value={name}
-                                onChange={(e)=>setName(e.target.value)}
+                                onChange={(e) => setName(e.target.value)}
                             />
                         </div>
                         <div>
                             <AttachMoneyIcon />
-                            <input 
+                            <input
                                 type="number"
                                 placeholder="Price"
                                 required
                                 value={price}
-                                onChange={(e)=>setPrice(e.target.value)}
+                                onChange={(e) => setPrice(e.target.value)}
                             />
                         </div>
                         <div>
@@ -108,18 +108,18 @@ export const NewProduct = ({history}) => {
                             <textarea
                                 placeholder="Product Description"
                                 value={description}
-                                onChange={(e)=>setDescription(e.target.value)}
+                                onChange={(e) => setDescription(e.target.value)}
                                 cols="30"
                                 rows="1"
                             ></textarea>
                         </div>
                         <div>
                             <AccountTreeIcon />
-                            <select onChange={(e)=>setCategory(e.target.value)}
+                            <select onChange={(e) => setCategory(e.target.value)}
                             >
                                 <option value="">Choose Category</option>
                                 {
-                                    categories.map((category)=>(
+                                    categories.map((category) => (
                                         <option key={category} value={category}>
                                             {category}
                                         </option>
@@ -129,16 +129,16 @@ export const NewProduct = ({history}) => {
                         </div>
                         <div>
                             <StorageIcon />
-                            <input 
+                            <input
                                 type="number"
                                 placeholder="Stock"
                                 required
-                                value={stock}
-                                onChange={(e)=>setStock(e.target.value)}
+                                value={Stock}
+                                onChange={(e) => setStock(e.target.value)}
                             />
                         </div>
                         <div id="createProductFormFile">
-                            <input 
+                            <input
                                 type="file"
                                 name="avatar"
                                 accept="image/*"
@@ -147,14 +147,14 @@ export const NewProduct = ({history}) => {
                             />
                         </div>
                         <div id="createProductFormImage">
-                                {imagesPreview.map((image, index)=>(
-                                    <img key={index} src={image} alt="Product Preview" />
-                                ))}
+                            {imagesPreview.map((image, index) => (
+                                <img key={index} src={image} alt="Product Preview" />
+                            ))}
                         </div>
-                        <Button 
+                        <Button
                             id="createProductBtn"
                             type="submit"
-                            disabled={loading ? true: false}
+                            disabled={loading ? true : false}
                         >Create</Button>
                     </form>
                 </div>

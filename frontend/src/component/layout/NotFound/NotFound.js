@@ -1,5 +1,5 @@
-import { Typography } from '@material-ui/core/Typography';
-import ErrorIcon from '@material-ui/icon/Error';
+import Typography from '@material-ui/core/Typography';
+import ErrorIcon from '@material-ui/icons/Error';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NotFound.css';

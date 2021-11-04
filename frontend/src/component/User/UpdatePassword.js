@@ -1,11 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import './updatePassword.css';
+import './UpdatePassword.css';
 import { Loader } from '../layout/Loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, updatePassword } from '../../actions/userAction';
 import { useAlert } from 'react-alert';
 import { UPDATE_PASSWORD_RESET } from '../../constants/userConstants';
-import MetaData from "../layout/MetaData";
+import { MetaData } from "../layout/MetaData";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
@@ -15,7 +15,7 @@ export const UpdatePassword = ({ history }) => {
     const dispatch = useDispatch();
     const alert = useAlert();
 
-    const { error, isUpdate, loading } = useSelector((state) => state.profile);
+    const { error, isUpdated, loading } = useSelector((state) => state.profile);
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmedPassword, setConfirmedPassword] = useState('');
@@ -88,8 +88,8 @@ export const UpdatePassword = ({ history }) => {
                                         type="password"
                                         placeholder="Confirm Password"
                                         required
-                                        value={confirmPassword}
-                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        value={confirmedPassword}
+                                        onChange={(e) => setConfirmedPassword(e.target.value)}
                                     />
                                 </div>
                                 <input

@@ -3,9 +3,9 @@ import React, { Fragment, useEffect } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { clearErrors, getOrderDetails } from '../../actions/userAction';
+import { clearErrors, getOrderDetails } from '../../actions/orderAction';
 import { Loader } from '../layout/Loader/Loader';
-import MetaData from '../layout/MetaData';
+import { MetaData } from '../layout/MetaData';
 import './orderDetails.css';
 
 export const OrderDetails = ({ match }) => {
