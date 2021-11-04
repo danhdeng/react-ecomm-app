@@ -20,7 +20,7 @@ export const NewProduct = ({ history }) => {
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
     const [category, setCategory] = useState("");
-    const [Stock, setStock] = useState(0);
+    const [stock, setStock] = useState(0);
     const [images, setImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
     const categories = [
@@ -51,7 +51,7 @@ export const NewProduct = ({ history }) => {
         myForm.set("price", price);
         myForm.set("description", description);
         myForm.set("category", category);
-        myForm.set("Stock", Stock);
+        myForm.set("stock", stock);
 
         images.forEach((image) => {
             myForm.append("images", image);
@@ -133,7 +133,7 @@ export const NewProduct = ({ history }) => {
                                 type="number"
                                 placeholder="Stock"
                                 required
-                                value={Stock}
+                                value={stock}
                                 onChange={(e) => setStock(e.target.value)}
                             />
                         </div>
