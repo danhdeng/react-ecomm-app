@@ -1,12 +1,12 @@
-import React, { Fragment, useEffect } from 'react';
-import './orderDetails.css';
-import { useSelector, useDispatch } from 'react-redux';
-import MetaData from '../layout/MetaData';
-import { Link } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
-import { getOrderDetails, clearErrors } from '../../actions/userAction';
-import { Loader } from '../layout/Loader/Loader';
+import React, { Fragment, useEffect } from 'react';
 import { useAlert } from 'react-alert';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { clearErrors, getOrderDetails } from '../../actions/userAction';
+import { Loader } from '../layout/Loader/Loader';
+import MetaData from '../layout/MetaData';
+import './orderDetails.css';
 
 export const OrderDetails = ({ match }) => {
     const { order, error, loading } = useSelector((state) => state.orderDetails);
@@ -36,7 +36,7 @@ export const OrderDetails = ({ match }) => {
                             </div>
                             <div>
                                 <p>Phone:</p>
-                                <span>{order.shippingInfo && order.shippingInfo.phoneNo</span>
+                                <span>{order.shippingInfo && order.shippingInfo.phoneNo}</span>
                             </div>
                             <div>
                                 <p>Address:</p>
@@ -62,7 +62,7 @@ export const OrderDetails = ({ match }) => {
                             </div>
                             <div>
                                 <p>Amount:</p>
-                                <span>{order && order.totalPrice}</span>
+                                <span>{order.totalPrice && order.totalPrice}</span>
                             </div>
                             <Typography>Order Status</Typography>
                             <div className="orderDetailsContainerBox">
