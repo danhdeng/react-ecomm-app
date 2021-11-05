@@ -4,11 +4,11 @@ import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addItemToCart, removeItemFromCart } from '../../actions/cartAction';
+import './Cart.css';
 import { CartItemCard } from './CartItemCard';
-
 export const Cart = ({history}) => {
     const dispatch = useDispatch();
-    const {cartItems} = useSelector((state) => state.cartItems);
+  const { cartItems } = useSelector((state) => state.cart);
     const increaseQuantity=(id, quantity,stock) =>{
         const newQty = quantity +1;
         if(stock <=quantity){
@@ -17,7 +17,7 @@ export const Cart = ({history}) => {
         dispatch(addItemToCart(id,newQty));
     }
 
-    const decreaseQuantity=(id, quantity,stock) =>{
+    const decreaseQuantity=(id, quantity) =>{
         const newQty = quantity - 1;
         if(quantity <=1){
             return;
@@ -66,11 +66,11 @@ export const Cart = ({history}) => {
                             <div className="cartGrossProfit">
                                 <div></div>
                                 <div className="cartGrossProfitBox">
-                                    <p>Gross Profit</p>
+                                    <p>Gross Total</p>
                                     <p>{`$${cartItems.reduce((acc, item)=>acc+item.price*item.quanity,0)}`}</p>
                                 </div>
                                 <div></div>
-                                <div className="checkoutBtn">
+              <div className="checkOutBtn">
                                     <button onClick={checkoutHandler}>Check Out</button>
                                 </div>
                             </div>

@@ -12,13 +12,13 @@
 }
 
 .paymentForm > p {
-    font:400 2vmax "Roboto";
-    color: rgba(0, 0, 0, 0.753);
-    border-radius: 1px solid rgba(0, 0, 0, 0.13);
-    padding: 1vmax 0;
-    text-align: center;
-    width: 50%;
-    margin: auto;
+  font: 400 2vmax "Roboto";
+  color: rgba(0, 0, 0, 0.753);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+  padding: 1vmax 0;
+  text-align: center;
+  width: 50%;
+  margin: auto;
 }
 
 .paymentForm > div {

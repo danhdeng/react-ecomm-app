@@ -92,7 +92,7 @@
     background-color: rgb(235,235, 235);
 }
 
-.updateProfileButton {
+.updateProfileBtn {
     border: none;
     background-color: tomato;
     color: white;
@@ -106,7 +106,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
 }
 
-.updateProfileButton:hover{
+.updateProfileBtn:hover {
     background-color: rgb(179, 66, 46);
 }
 

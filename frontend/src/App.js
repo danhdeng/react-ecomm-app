@@ -4,7 +4,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import webfont from 'webfontloader';
+import WebFont from 'webfontloader';
 import { loadUser } from './actions/userAction';
 import './App.css';
 import { Dashboard } from "./component/Admin/Dashboard.js";
@@ -48,13 +48,13 @@ function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
 
   async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeaipkey");
+    const { data } = await axios.get("/api/v1/stripeapikey");
     setStripeApiKey(data.stripeApiKey);
   }
   useEffect(() => {
-    webfont.load({
+    WebFont.load({
       google: {
-        families: ["Roboto", "Doroid Sans", "Chilanka"]
+        families: ["Roboto", "Droid Sans", "Chilanka"]
       },
     });
     store.dispatch(loadUser());

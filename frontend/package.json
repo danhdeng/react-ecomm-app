@@ -16,7 +16,6 @@
     "caniuse-lite": "^1.0.30001276",
     "chart.js": "^3.6.0",
     "country-state-city": "^3.0.1",
-    "material-ui": "^0.20.2",
     "overlay-navbar": "^1.1.1",
     "react": "^17.0.2",
     "react-alert": "^7.0.3",

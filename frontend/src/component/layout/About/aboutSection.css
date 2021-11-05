@@ -53,6 +53,10 @@
     font: 100  1vmax "Roboto";
 }
 
+.aboutSectionContainer > div > div > button {
+  margin: 1vmax 0;
+}
+
 .aboutSectionContainer > div > div > span {
     font: 100 1vmax "Roboto";
     color:rgba(0, 0, 0, 0.616);
@@ -79,7 +83,7 @@
 }
 
 .instagramSvgIcon {
-    color: rgb(144, 81. 202);
+    color: rgb(144, 81, 202);
 }
 
 @media screen and (max-width: 600px) {

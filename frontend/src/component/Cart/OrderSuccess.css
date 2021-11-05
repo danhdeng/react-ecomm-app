@@ -1,11 +1,12 @@
 .orderSuccess {
-    margin: auto;
-    text-align: center;
-    padding: 10vmax;
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .orderSuccess > svg {

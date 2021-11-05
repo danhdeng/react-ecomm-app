@@ -1,19 +1,30 @@
 import React, { Fragment, useEffect } from 'react';
+import { useAlert } from "react-alert";
 import { CgMouse } from 'react-icons/all';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProduct } from '../../actions/productAction';
+import { clearErrors, getProduct } from '../../actions/productAction';
+import { Loader } from "../layout/Loader/Loader";
 import { MetaData } from '../layout/MetaData';
 import "./Home.css";
 import { ProductCard } from './ProductCard';
 
-
 export const Home = () => {
+  const alert = useAlert();
     const dispatch = useDispatch();
-    const {loading, error, products, productsCount}=useSelector(state => state.products)
-    useEffect(() => {
-        dispatch(getProduct());
-    }, [dispatch]);
-    return (
+    const {loading, error, products}=useSelector((state) => state.products)
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getProduct());
+  }, [dispatch, error, alert]);
+
+  return (
+    <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
         <Fragment>
             <MetaData title="ECOMMERCE" />
             <div className="banner">
@@ -25,6 +36,7 @@ export const Home = () => {
                     </button>
                 </a>
             </div>
+          <h2 className="homeHeading">Featured Products</h2>
             <div className="container" id="container">
                 {products &&
                     products.map((product) => (
@@ -32,5 +44,7 @@ export const Home = () => {
                     ))}
             </div>
         </Fragment>
-    )
-}
+      )}
+    </Fragment>
+  );
+};

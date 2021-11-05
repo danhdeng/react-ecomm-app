@@ -1,5 +1,5 @@
 .banner {
-    background-image: url("../../images//cover.jfif");
+    background-image: url("../../images/cover.jfif");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -78,7 +78,7 @@
     color: rgb(48, 48, 48);
     margin: 2vmax;
     transition: all 0.5s;
-    padding-bottom: 5vmax;
+    padding-bottom: 0.5vmax;
 }
 
 .productCard > img {
@@ -113,7 +113,7 @@
 
 .productCard:hover {
     box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
-    transform: translate(-1vmax);
+    transform: translateY(-1vmax);
 }
 
 @media screen and (max-width: 600px) {

@@ -50,8 +50,8 @@
 }
 
 .confirmCartItemsContainer {
-    max-height: 20vmax;
-    overflow:auto;
+  max-height: 20vmax;
+  overflow-y: auto;
 }
 
 .confirmCartItemsContainer > div {
@@ -73,7 +73,7 @@
     text-decoration: none;
 }
 
-.confirmCartItemsContainer > div span {
+.confirmCartItemsContainer > div > span {
     font: 100 1vmax "Roboto";
     color: #5e5e5e;
 }

@@ -6,7 +6,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { clearErrors, login, register } from "../../actions/userAction";
-import { Loader } from '../../component/layout/Loader/Loader';
+import { Loader } from '../layout/Loader/Loader';
 import "./LoginSignUp.css";
 
 export const LoginSignUp = ({history, location}) => {
@@ -29,9 +29,9 @@ export const LoginSignUp = ({history, location}) => {
 
     const {name, email, password}=user;
 
-    const [avatar, setAvator]=useState("/Profiel.png");
+    const [avatar, setAvatar]=useState("/Profile.png");
 
-    const [avatarPreview, setAvatorPreview]=useState("/Profiel.png");
+    const [avatarPreview, setAvatarPreview]=useState("/Profile.png");
 
     const loginSubmit= (e) =>{
         e.preventDefault();
@@ -43,7 +43,8 @@ export const LoginSignUp = ({history, location}) => {
         const myForm=new FormData();
         myForm.set("name",name);
         myForm.set("email",email);
-        myForm.set("password", avatar);
+    myForm.set("password", password);
+    myForm.set("avatar", avatar);
         dispatch(register(myForm));
     }
 
@@ -52,18 +53,18 @@ export const LoginSignUp = ({history, location}) => {
             const reader=new FileReader();
             reader.onload=()=>{
                 if(reader.readyState===2){
-                    setAvatorPreview(reader.result);
-                    setAvator(reader.result);
+                    setAvatarPreview(reader.result);
+                    setAvatar(reader.result);
                 }
             };
-            reader.readAsDataUrl(e.target.files[0]);
+      reader.readAsDataURL(e.target.files[0]);
         }
         else{
             setUser({...user, [e.target.name]: e.target.value});
         }
     };
     
-    const redirect=location.search ? location.search.split("=")[1]:"/account";
+    const redirect=location.search ? location.search.split("=")[1]: "/account";
     
     useEffect(() => {
         if(error){
@@ -75,7 +76,7 @@ export const LoginSignUp = ({history, location}) => {
         }
     },[dispatch, error, alert, history, isAuthenticated, redirect]);
 
-    const switchTab= (e, tab) =>{
+    const switchTabs= (e, tab) =>{
         if(tab==="login"){
             switcherTab.current.classList.add("shiftToNeutral");
             switcherTab.current.classList.remove("shiftToRight");
@@ -98,9 +99,9 @@ export const LoginSignUp = ({history, location}) => {
                   <div className="LoginSignUpContainer">
                     <div className="LoginSignUpBox">
                         <div>
-                            <div className="login_signup_toggle">
-                                <p onClick={(e)=>switchTab(e, "login")}>LOGIN</p>
-                                <p onClick={(e)=>switchTab(e, "register")}>REGISTER</p>
+                            <div className="login_signUp_toggle">
+                                <p onClick={(e)=>switchTabs(e, "login")}>LOGIN</p>
+                                <p onClick={(e)=>switchTabs(e, "register")}>REGISTER</p>
                             </div>
                             <button ref={switcherTab}></button>
                         </div>
@@ -179,10 +180,12 @@ export const LoginSignUp = ({history, location}) => {
                 </div>
                 <input type="submit" value="Register" className="signUpBtn" />
               </form>
-                    </div>
-                  </div>
-              </Fragment>  
-            )}      
+            </div>
+          </div>
         </Fragment>
-    )
-}
+      )}
+    </Fragment>
+  );
+};
+
+export default LoginSignUp;
