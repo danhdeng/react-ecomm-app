@@ -12,7 +12,7 @@ class ApiFeatures {
                 }
             }
             : {};
-        console.log(keyword);
+        // console.log(keyword);
         this.query = this.query.find({ ...keyword });
         return this;
     }
@@ -23,7 +23,7 @@ class ApiFeatures {
         //fields removed 
         const removeFields = ["keyword", "page", "limit"];
         removeFields.forEach((key) => delete queryCopy[key]);
-        console.log(queryCopy);
+        // console.log(queryCopy);
         //filter for Pirce and Rating
         let queryStr = JSON.stringify(queryCopy);
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);

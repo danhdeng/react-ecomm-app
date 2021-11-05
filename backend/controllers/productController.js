@@ -50,6 +50,7 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 //get product details
 exports.getProductDetails = catchAsyncErrors(async (req, res, next) => {
     let product = await Product.findById(req.params.id);
+    console.log(product);
     if (!product) {
         return next(new ErrorHandler('Product Not Found', 404));
     }

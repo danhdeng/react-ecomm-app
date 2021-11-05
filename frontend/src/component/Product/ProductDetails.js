@@ -4,6 +4,7 @@ import {
 } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
 import React, { Fragment, useEffect, useState } from 'react';
+import { useAlert } from 'react-alert';
 import Carousel from 'react-material-ui-carousel';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemToCart } from '../../actions/cartAction';
@@ -20,7 +21,7 @@ import { ReviewCard } from './ReviewCard';
 
 export const ProductDetails = ({ match }) => {
     const dispatch = useDispatch();
-    // const alert = useAlert();
+    const alert = useAlert();
     const { product, loading, error } = useSelector((state) => state.productDetails);
 
     const {success, error:reviewError} =useSelector((state) => state.newReview);
