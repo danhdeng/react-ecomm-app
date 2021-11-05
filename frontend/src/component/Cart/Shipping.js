@@ -24,14 +24,15 @@ export const Shipping = ({ history }) => {
     const [postalCode, setPostalCode] = useState(shippingInfo.postalCode);
     const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
 
-    const shhippingSubmit = (e) => {
+    const shippingSubmit = (e) => {
         e.preventDefault();
 
         if (phoneNo.length < 10 || phoneNo.length > 10) {
             alert.error("Phone Number should be 10 digits long");
+            return;
         }
-        dispatch(saveShippingInfo({ address, city, country, postalCode, phoneNo }));
-        history.push("/order/confirm/");
+        dispatch(saveShippingInfo({ address, city,state, country, postalCode, phoneNo }));
+        history.push("/order/confirm");
     };
     return (
         <Fragment>
@@ -43,7 +44,7 @@ export const Shipping = ({ history }) => {
                     <form
                         className="shippingForm"
                         encType="multipart/form-data"
-                        onSubmit={shhippingSubmit}
+                        onSubmit={shippingSubmit}
                     >
                         <div>
                             <HomeIcon />
@@ -72,12 +73,12 @@ export const Shipping = ({ history }) => {
                                 type="text"
                                 placeholder="Postal Code"
                                 required
-                                value={address}
+                                value={postalCode}
                                 onChange={(e) => setPostalCode(e.target.value)}
                             />
                         </div>
                         <div>
-                            <HomeIcon />
+                            <PhoneIcon />
                             <input
                                 type="number"
                                 placeholder="Phone Number"
@@ -111,7 +112,7 @@ export const Shipping = ({ history }) => {
                                 >
                                     <option value="">State</option>
                                     {
-                                        State && State.getStateOfCountry(country).map((item) => (
+                                        State && State.getStatesOfCountry(country).map((item) => (
                                             <option key={item.isoCode} value={item.isoCode}>{item.name}</option>
                                         ))
                                     }

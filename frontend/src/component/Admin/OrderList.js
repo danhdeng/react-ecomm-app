@@ -99,29 +99,37 @@ export const OrderList = ({ history }) => {
     ];
     const rows = [];
 
-    orders &&
-        orders.forEach((item) => {
-            rows.push({
-                id: item._id,
-                itemsQty: item.orderItems.length,
-                amount: item.totalPrice,
-                status: item.orderStatus,
-            });
-        });
-    return (
-        <Fragment>
-            <MetaData title="ALL ORDERS - Admin" />
-            <div className="dashboard">
-                <h1 id="productListHeading">ALL ORDERS</h1>
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    pageSize={10}
-                    disableSelectionOnClick
-                    className="productListTable"
-                    autoHeight
-                />
-            </div>
-        </Fragment>
-    )
-}
+  orders &&
+    orders.forEach((item) => {
+      rows.push({
+        id: item._id,
+        itemsQty: item.orderItems.length,
+        amount: item.totalPrice,
+        status: item.orderStatus,
+      });
+    });
+
+  return (
+    <Fragment>
+      <MetaData title={`ALL ORDERS - Admin`} />
+
+      <div className="dashboard">
+        <SideBar />
+        <div className="productListContainer">
+          <h1 id="productListHeading">ALL ORDERS</h1>
+
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={10}
+            disableSelectionOnClick
+            className="productListTable"
+            autoHeight
+          />
+        </div>
+      </div>
+    </Fragment>
+  );
+};
+
+export default OrderList;

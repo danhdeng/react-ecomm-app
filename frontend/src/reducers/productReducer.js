@@ -22,21 +22,21 @@ export const productsReducer = (state = { products: [] }, action) => {
         case ALL_PRODUCT_SUCCESS:
             return {
                 loading: false,
-                products: action.payLoad.products,
-                productsCount: action.payLoad.productsCount,
-                resultPerPage: action.payLoad.resultPerPage,
-                filteredProductsCount: action.payLoad.filteredProductsCount,
+                products: action.payload.products,
+                productsCount: action.payload.productsCount,
+                resultPerPage: action.payload.resultPerPage,
+                filteredProductsCount: action.payload.filteredProductsCount,
             };
         case ADMIN_PRODUCT_SUCCESS:
             return {
                 loading: false,
-                products: action.payLoad,
+                products: action.payload,
             };
         case ALL_PRODUCT_FAILURE:
         case ADMIN_PRODUCT_FAILURE:
             return {
                 loading: false,
-                error: action.payLoad
+                error: action.payload
             };
 
         case CLEAR_ERRORS:
@@ -59,13 +59,13 @@ export const newProductReducer = (state = { product: {} }, action) => {
         case NEW_PRODUCT_SUCCESS:
             return {
                 loading: false,
-                success: action.payLoad.success,
-                product: action.payLoad.product,
+                success: action.payload.success,
+                product: action.payload.product,
             };
         case NEW_PRODUCT_FAILURE:
             return {
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case NEW_PRODUCT_RESET:
             return {
@@ -94,20 +94,20 @@ export const productReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
-                isDeleted: action.payLoad
+                isDeleted: action.payload
             };
         case UPDATE_PRODUCT_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                isUpdated: action.payLoad
+                isUpdated: action.payload
             };
         case DELETE_PRODUCT_FAILURE:
         case UPDATE_PRODUCT_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad
+                error: action.payload
             };
         case DELETE_PRODUCT_RESET:
             return {
@@ -139,12 +139,12 @@ export const productDetailsReducer = (state = { product: {} }, action) => {
         case PRODUCT_DETAILS_SUCCESS:
             return {
                 loading: false,
-                product: action.payLoad,
+                product: action.payload,
             };
         case PRODUCT_DETAILS_FAILURE:
             return {
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case CLEAR_ERRORS:
             return {
@@ -166,13 +166,13 @@ export const newReviewReducer = (state = {}, action) => {
         case NEW_REVIEW_SUCCESS:
             return {
                 loading: false,
-                success: action.payLoad
+                success: action.payload
             };
         case NEW_REVIEW_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case NEW_REVIEW_RESET:
             return {
@@ -199,13 +199,13 @@ export const productReviewsReducer = (state = { reviews: [] }, action) => {
         case ALL_REVIEW_SUCCESS:
             return {
                 loading: false,
-                reviews: action.payLoad,
+                reviews: action.payload,
             };
         case ALL_REVIEW_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case CLEAR_ERRORS:
             return {
@@ -228,13 +228,13 @@ export const reviewReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
-                isDeleted: action.payLoad,
+                isDeleted: action.payload,
             };
         case DELETE_REVIEW_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case DELETE_REVIEW_RESET:
             return {

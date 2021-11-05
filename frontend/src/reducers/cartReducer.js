@@ -7,7 +7,7 @@ import {
 export const cartReducer = (state = { cartItems: [], shippingInfo: {} }, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            const item = action.payLoad;
+            const item = action.payload;
             const isItemExists = state.cartItems.find(
                 (cartItem) => cartItem.product === item.product
             );
@@ -36,7 +36,7 @@ export const cartReducer = (state = { cartItems: [], shippingInfo: {} }, action)
         case SAVE_SHIPPING_INFO:
             return {
                 ...state,
-                shippingInfo: action.payLoad
+                shippingInfo: action.payload
             }
         default:
             return state;

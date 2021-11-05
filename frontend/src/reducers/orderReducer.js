@@ -33,13 +33,13 @@ export const newOrderReducer = (state = {}, action) => {
         case CREATE_ORDER_SUCCESS:
             return {
                 loading: false,
-                order: action.payLoad
+                order: action.payload
             };
 
         case CREATE_ORDER_FAILURE:
             return {
                 loading: false,
-                error: action.payLoad
+                error: action.payload
             };
 
         case CLEAR_ERRORS:
@@ -62,12 +62,12 @@ export const myOrdersReducer = (state = { orders: [] }, action) => {
         case MY_ORDERS_SUCCESS:
             return {
                 loading: false,
-                orders: action.payLoad,
+                orders: action.payload,
             }
         case MY_ORDERS_FAILURE:
             return {
                 loading: false,
-                error: action.payLoad
+                error: action.payload
             };
         case CLEAR_ERRORS:
             return {
@@ -90,12 +90,12 @@ export const allOrdersReducer = (state = { orders: [] }, action) => {
         case ALL_ORDERS_SUCCESS:
             return {
                 loading: false,
-                orders: action.payLoad,
+                orders: action.payload,
             }
         case ALL_ORDERS_FAILURE:
             return {
                 loading: false,
-                error: action.payLoad
+                error: action.payload
             };
         case CLEAR_ERRORS:
             return {
@@ -119,19 +119,19 @@ export const orderReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
-                isUpdated: action.payLoad,
+                isUpdated: action.payload,
             }
         case DELETE_ORDER_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                isDeleted: action.payLoad,
+                isDeleted: action.payload,
             }
         case UPDATE_ORDER_FAILURE:
         case DELETE_ORDER_FAILURE:
             return {
                 loading: false,
-                error: action.payLoad
+                error: action.payload
             };
         case UPDATE_ORDER_RESET:
         case DELETE_ORDER_RESET:
@@ -159,12 +159,12 @@ export const orderDetailsReducer = (state = { order: {} }, action) => {
         case ORDER_DETAILS_SUCCESS:
             return {
                 loading: false,
-                order: action.payLoad,
+                order: action.payload,
             }
         case ORDER_DETAILS_FAILURE:
             return {
                 loading: false,
-                error: action.payLoad
+                error: action.payload
             };
         case CLEAR_ERRORS:
             return {

@@ -8,16 +8,17 @@ class ApiFeatures {
             {
                 name: {
                     $regex: this.queryStr.keyword,
-                    $options: "i"
-                }
+                    $options: "i",
+                },
             }
             : {};
-        // console.log(keyword);
+        console.log("keyword: " + keyword);
         this.query = this.query.find({ ...keyword });
         return this;
     }
 
     filter() {
+        console.log(this.queryStr);
         const queryCopy = { ...this.queryStr };
 
         //fields removed 
@@ -26,17 +27,23 @@ class ApiFeatures {
         // console.log(queryCopy);
         //filter for Pirce and Rating
         let queryStr = JSON.stringify(queryCopy);
+        console.log(queryCopy);
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
-        this.query = this.query.find(JSON.parse(queryStr));
-        return this
+        console.log("query string :" + queryStr);
+        console.log(JSON.parse(queryStr, null, 2));
+        this.query = this.query.find(JSON.parse(queryStr, null, 2));
+        return this;
     }
 
-    pagination(reslutPerPage) {
+    pagination(resultPerPage) {
         const currentPage = Number(this.queryStr.page) || 1;
-        const skipNumberofRecords = reslutPerPage * (currentPage - 1);
-        this.query = this.query.limit(reslutPerPage).skip(skipNumberofRecords)
+
+        const skip = resultPerPage * (currentPage - 1);
+
+        this.query = this.query.limit(resultPerPage).skip(skip);
+
         return this;
     }
 }
 
-module.exports = ApiFeatures
+module.exports = ApiFeatures;

@@ -27,7 +27,7 @@ export const userReducer = (state = { user: {} }, action) => {
                 ...state,
                 loading: false,
                 isAuthenticated: true,
-                user: action.payLoad,
+                user: action.payload,
             };
 
         case LOGOUT_SUCCESS:
@@ -43,19 +43,19 @@ export const userReducer = (state = { user: {} }, action) => {
                 loading: false,
                 isAuthenticated: false,
                 user: null,
-                error: action.payLoad,
+                error: action.payload,
             };
         case LOGOUT_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case LOAD_USER_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             }
         case CLEAR_ERRORS:
             return {
@@ -84,14 +84,14 @@ export const profileReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
-                isUpdated: action.payLoad,
+                isUpdated: action.payload,
             };
 
         case DELETE_USER_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                isDeleted: action.payLoad,
+                isDeleted: action.payload,
 
             };
         case UPDATE_PROFILE_FAILURE:
@@ -101,7 +101,7 @@ export const profileReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case UPDATE_PROFILE_RESET:
         case UPDATE_PASSWORD_RESET:
@@ -138,20 +138,20 @@ export const forgotPasswordReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
-                message: action.payLoad,
+                message: action.payload,
             };
         case RESET_PASSWORD_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                success: action.payLoad,
+                success: action.payload,
             };
         case RESET_PASSWORD_FAILURE:
         case FORGOT_PASSWORD_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case CLEAR_ERRORS:
             return {
@@ -174,13 +174,13 @@ export const allUsersReducer = (state = { users: [] }, action) => {
             return {
                 ...state,
                 loading: false,
-                users: action.payLoad,
+                users: action.payload,
             };
         case ALL_USERS_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case CLEAR_ERRORS:
             return {
@@ -203,13 +203,13 @@ export const userDetailsReducer = (state = { user: {} }, action) => {
             return {
                 ...state,
                 loading: false,
-                user: action.payLoad,
+                user: action.payload,
             };
         case USER_DETAILS_FAILURE:
             return {
                 ...state,
                 loading: false,
-                error: action.payLoad,
+                error: action.payload,
             };
         case CLEAR_ERRORS:
             return {

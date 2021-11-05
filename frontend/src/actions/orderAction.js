@@ -20,13 +20,13 @@ export const createOrder = (order) => async (dispatch) => {
         const { data } = await axios.post("/api/v1/order/new", order, config);
         dispatch({
             type: CREATE_ORDER_SUCCESS,
-            payLoad: data
+            payload: data
         });
     }
     catch (error) {
         dispatch({
             type: CREATE_ORDER_FAILURE,
-            payLoad: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 };
@@ -38,13 +38,13 @@ export const myOrders = () => async (dispatch) => {
         const { data } = await axios.get("/api/v1/orders/me");
         dispatch({
             type: MY_ORDERS_SUCCESS,
-            payLoad: data.orders
+            payload: data.orders
         });
 
     } catch (error) {
         dispatch({
             type: MY_ORDERS_FAILURE,
-            payLoad: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 }
@@ -56,12 +56,12 @@ export const getAllOrders = () => async (dispatch) => {
         const { data } = await axios.get("/api/v1/ordres");
         dispatch({
             type: ALL_ORDERS_SUCCESS,
-            payLoad: data.orders
+            payload: data.orders
         });
     } catch (error) {
         dispatch({
             type: ALL_ORDERS_FAILURE,
-            payLoad: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 }
@@ -79,12 +79,12 @@ export const updateOrder = (id, order) => async (dispatch) => {
 
         dispatch({
             type: UPDATE_ORDER_SUCCESS,
-            payLoad: data.success
+            payload: data.success
         });
     } catch (error) {
         dispatch({
             type: UPDATE_ORDER_FAILURE,
-            payLoad: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 };
@@ -98,7 +98,7 @@ export const deleteOrder = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: DELETE_ORDER_FAILURE,
-            payLoad: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 }
@@ -108,11 +108,11 @@ export const getOrderDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: ORDER_DETAILS_REQUEST });
         const { data } = await axios.get(`/api/v1/order/${id}`);
-        dispatch({ type: ORDER_DETAILS_SUCCESS, payLoad: data.order });
+        dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
     } catch (error) {
         dispatch({
             type: ORDER_DETAILS_FAILURE,
-            payLoad: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 }
