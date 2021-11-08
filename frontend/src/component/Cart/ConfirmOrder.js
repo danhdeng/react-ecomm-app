@@ -11,14 +11,14 @@ export const ConfirmOrder = ({history}) => {
     const {user} = useSelector((state) => state.user);
     const subtotal=cartItems.reduce((acc, item) =>acc +item.quantity* item.price, 0);
 
-    const shipppingCharges=subtotal>1000 ? 0 : 15;
+    const shippingCharges=subtotal>1000 ? 0 : 15;
     const tax=subtotal *0.13;
-    const totalPrice = subtotal +tax + shipppingCharges;
+    const totalPrice = subtotal +tax + shippingCharges;
     const address=`${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state} ${shippingInfo.postalCode}, ${shippingInfo.country}`;
-    const processToPayment=()=>{
+    const proceedToPayment=()=>{
         const data={
             subtotal,
-            shipppingCharges,
+            shippingCharges,
             tax,
             totalPrice,
         };
@@ -77,8 +77,8 @@ export const ConfirmOrder = ({history}) => {
                             <span>{`$${subtotal}`}</span>
                         </div>
                         <div>
-                            <p>Shipping charges:</p>
-                            <span>{`$${shipppingCharges}`}</span>
+                            <p>Shipping Charges:</p>
+                            <span>{`$${shippingCharges}`}</span>
                         </div>
                         <div>
                             <p>GST:</p>
@@ -88,7 +88,7 @@ export const ConfirmOrder = ({history}) => {
                     <div className="orderSummaryTotal">
                             <p>Total:</p>
                             <span>{`$${totalPrice}`}</span>
-                            <button onClick={processToPayment}>Process to Payment</button>
+                            <button onClick={proceedToPayment}>Proceed To Payment</button>
                     </div>
                 </div>     
             </div>      

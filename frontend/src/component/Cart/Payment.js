@@ -12,6 +12,7 @@ import {
     useElements,
 } from '@stripe/react-stripe-js';
 
+import "./Payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard";
 import EventIcon from "@material-ui/icons/Event";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
@@ -40,7 +41,8 @@ export const Payment = ({ history }) => {
         orderItems: cartItems,
         itemsPrice: orderInfo.subtotal,
         taxPrice: orderInfo.tax,
-        shippingPrice: orderInfo.totalPrice,
+        shippingPrice: orderInfo.shippingCharges,
+        totalPrice: orderInfo.totalPrice,
     };
 
     const submitHandler = async (e) => {
@@ -61,7 +63,7 @@ export const Payment = ({ history }) => {
 
             const result = await stripe.confirmCardPayment(client_secret, {
                 payment_method: {
-                    card: elements.get_Element(CardNumberElement),
+                    card: elements.getElement(CardNumberElement),
                     billing_details: {
                         name: user.name,
                         email: user.email,
@@ -127,7 +129,7 @@ export const Payment = ({ history }) => {
 
                     <input
                         type="submit"
-                        value={`Pay- $${orderInfo.totalPrice && orderInfo.totalPrice}`}
+                        value={`Pay- $${orderInfo && orderInfo.totalPrice}`}
                         ref={payBtn}
                         className="paymentFormBtn"
                     />

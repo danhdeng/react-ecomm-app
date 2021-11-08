@@ -30,6 +30,7 @@ export const OrderDetails = ({ match }) => {
                                 Order #{order && order._id}
                             </Typography>
                             <Typography>Shipping Info</Typography>
+              <div className="orderDetailsContainerBox">
                             <div>
                                 <p>Name:</p>
                                 <span>{order.user && order.user.name}</span>
@@ -64,6 +65,7 @@ export const OrderDetails = ({ match }) => {
                                 <p>Amount:</p>
                                 <span>{order.totalPrice && order.totalPrice}</span>
                             </div>
+                        </div>
                             <Typography>Order Status</Typography>
                             <div className="orderDetailsContainerBox">
                                 <div>
@@ -85,7 +87,7 @@ export const OrderDetails = ({ match }) => {
                                 {order.orderItems &&
                                     order.orderItems.map((item) => (
                                         <div key={item.product}>
-                                            <img src={item.image} alt="product" />
+                                            <img src={item.image} alt="Product" />
                                             <Link to={`/product/${item.product}`}>
                                                 {item.name}
                                             </Link> {"  "}

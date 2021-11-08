@@ -55,7 +55,7 @@ export const ForgotPassword = () => {
                                     <input
                                         type='submit'
                                         value='send'
-                                        class="forgotPasswordButton"
+                  className="forgotPasswordBtn"
                                     />
                                 </form>
                             </div>

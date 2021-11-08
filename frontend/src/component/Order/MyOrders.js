@@ -27,7 +27,7 @@ export const MyOrders = () => {
             cellClassName: (params) => {
                 return params.getValue(params.id, "status") === "Delivered"
                     ? "greenColor"
-                    : "redColor"
+                    : "redColor";
             },
         },
         {

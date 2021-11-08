@@ -47,7 +47,7 @@
 }
 .MuiDataGrid-columnHeader div {
     color:rgb(255, 255, 255);
-    font:  1.1vmax "Roboto" !important;
+    font: 500 1.1vmax "Roboto" !important;
 }
 
 .MuiDataGrid-iconSeparator {
