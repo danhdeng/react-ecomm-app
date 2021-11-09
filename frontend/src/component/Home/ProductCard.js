@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const ProductCard = ({ product }) => {
     const options = {
-        value: product.ratings.rate,
+        value: product.ratings,
         readOnly: true,
         precision: 0.5,
     };

@@ -42,21 +42,43 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
-  console.log("request query" + req.query);
-  const apiFeature = new ApiFeatures(Product.find(), req.query)
-    .search()
-    .filter();
+  const keyword = req.query.keyword ?
+    {
+      name: {
+        $regex: req.query.keyword,
+        $options: "i",
+      },
+    }
+    : {};
 
-  let products = await apiFeature.query;
-  console.log("loading products");
-  console.log(products);
-  console.log(("loading products end"));
+  const queryCopy = { ...req.query };
+
+  //fields removed 
+  const removeFields = ["keyword", "page", "limit"];
+  removeFields.forEach((key) => delete queryCopy[key]);
+  // console.log(queryCopy);
+  //filter for Pirce and Rating
+  let queryStr = JSON.stringify(queryCopy);
+  console.log(queryCopy);
+  queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
+  console.log("query string :" + queryStr);
+  console.log(JSON.parse(queryStr, null, 2));
+  const products = await Product.find({ ...keyword, ...(JSON.parse(queryStr)) });
+  // const apiFeature = new ApiFeatures(Product.find(), req.query).search();
+
+  // let products = await apiFeature.query;
+
+  // await apiFeature.query.clone();
+
+  // apiFeature.filter();
+
+  // products = await apiFeature.query;
 
   let filteredProductsCount = products.length;
 
-  //apiFeature.pagination(resultPerPage);
+  // apiFeature.pagination(resultPerPage);
 
-  //products = await apiFeature.query;
+  // products = await apiFeature.query;
 
   res.status(200).json({
     success: true,

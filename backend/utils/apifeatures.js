@@ -31,7 +31,7 @@ class ApiFeatures {
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
         console.log("query string :" + queryStr);
         console.log(JSON.parse(queryStr, null, 2));
-        this.query = this.query.find(JSON.parse(queryStr, null, 2));
+        this.query = this.query.find(JSON.parse(queryStr));
         return this;
     }
 

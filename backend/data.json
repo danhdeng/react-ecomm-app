@@ -8,10 +8,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
         },
-        "ratings": {
-            "rate": 3.9,
-            "count": 120
-        },
+        "ratings": 4.8,
         "stock": 11,
         "numOfReviews": 120,
         "reviews": []
@@ -25,10 +22,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
         },
-        "ratings": {
-            "rate": 4.1,
-            "count": 259
-        },
+        "ratings": 4.1,
         "stock": 12,
         "numOfReviews": 259,
         "reviews": []
@@ -42,10 +36,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
         },
-        "ratings": {
-            "rate": 4.7,
-            "count": 500
-        },
+        "ratings": 3.7,
         "stock": 13,
         "numOfReviews": 500,
         "reviews": []
@@ -59,10 +50,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg"
         },
-        "ratings": {
-            "rate": 2.1,
-            "count": 430
-        },
+        "ratings": 2.1,
         "stock": 13,
         "numOfReviews": 430,
         "reviews": []
@@ -76,10 +64,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg"
         },
-        "ratings": {
-            "rate": 4.6,
-            "count": 400
-        },
+        "ratings": 4.6,
         "stock": 14,
         "numOfReviews": 400,
         "reviews": []
@@ -93,10 +78,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg"
         },
-        "ratings": {
-            "rate": 3.9,
-            "count": 70
-        },
+        "ratings": 3.9,
         "stock": 100,
         "numOfReviews": 70,
         "reviews": []
@@ -110,10 +92,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg"
         },
-        "ratings": {
-            "rate": 3,
-            "count": 400
-        },
+        "ratings": 3,
         "stock": 23,
         "numOfReviews": 400,
         "reviews": []
@@ -127,10 +106,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg"
         },
-        "ratings": {
-            "rate": 1.9,
-            "count": 100
-        },
+        "ratings": 1.9,
         "stock": 165,
         "numOfReviews": 100,
         "reviews": []
@@ -144,10 +120,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
         },
-        "ratings": {
-            "rate": 3.3,
-            "count": 203
-        },
+        "ratings": 3.3,
         "stock": 189,
         "numOfReviews": 203,
         "reviews": []
@@ -161,10 +134,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg"
         },
-		"ratings": {
-            "rate": 2.9,
-            "count": 470
-        },
+        "ratings": 2.9,
         "stock": 189,
         "numOfReviews": 470,
         "reviews": []
@@ -178,10 +148,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg"
         },
-        "ratings": {
-            "rate": 4.8,
-            "count": 319
-        },
+        "ratings": 4.8,
         "stock": 189,
         "numOfReviews": 319,
         "reviews": []
@@ -195,10 +162,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg"
         },
-        "ratings": {
-            "rate": 4.8,
-            "count": 400
-        },
+        "ratings": 4.8,
         "stock": 189,
         "numOfReviews": 400,
         "reviews": []
@@ -212,10 +176,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg"
         },
-        "ratings": {
-            "rate": 2.9,
-            "count": 250
-        },
+        "ratings": 2.9,
         "stock": 178,
         "numOfReviews": 250,
         "reviews": []
@@ -229,10 +190,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg"
         },
-        "ratings": {
-            "rate": 2.2,
-            "count": 140
-        },
+        "ratings": 2.2,
         "stock": 189,
         "numOfReviews": 140,
         "reviews": []
@@ -246,10 +204,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg"
         },
-        "ratings": {
-            "rate": 2.6,
-            "count": 235
-        },
+        "ratings": 2.6,
         "stock": 187,
         "numOfReviews": 235,
         "reviews": []
@@ -263,10 +218,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_.jpg"
         },
-        "ratings": {
-            "rate": 2.9,
-            "count": 340
-        },
+        "ratings": 1.8,
         "stock": 781,
         "numOfReviews": 340,
         "reviews": []
@@ -280,10 +232,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2.jpg"
         },
-        "ratings": {
-            "rate": 3.8,
-            "count": 679
-        },
+        "ratings": 3.7,
         "stock": 189,
         "numOfReviews": 679,
         "reviews": []
@@ -297,10 +246,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_.jpg"
         },
-        "ratings": {
-            "rate": 4.7,
-            "count": 130
-        },
+        "ratings": 4.7,
         "stock": 1898,
         "numOfReviews": 130,
         "reviews": []
@@ -314,10 +260,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_.jpg"
         },
-        "ratings": {
-            "rate": 4.5,
-            "count": 146
-        },
+        "ratings": 4.5,
         "stock": 1789,
         "numOfReviews": 146,
         "reviews": []
@@ -331,10 +274,7 @@
             "public_id": "sampleiamge",
             "url": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg"
         },
-        "ratings": {
-            "rate": 3.6,
-            "count": 145
-        },
+        "ratings": 3.6,
         "stock": 1985,
         "numOfReviews": 145,
         "reviews": []
