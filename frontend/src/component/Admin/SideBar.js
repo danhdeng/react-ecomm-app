@@ -22,8 +22,9 @@ export const SideBar = () => {
             <Link to="/admin/dashboard">
                 <DashboardIcon /> Dashboard
             </Link>
-            <TreeView 
-                defaultCollapseIcon={<ExpandMoreIcon />} 
+            <TreeView
+                style={{ padding: "2rem" }}
+                defaultCollapseIcon={<ExpandMoreIcon />}
                 defaultExpandIcon={<ImportExportIcon />}>
                 <TreeItem nodeId="1" label="Products" >
                     <Link to="/admin/products">

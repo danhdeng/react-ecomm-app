@@ -84,7 +84,7 @@ export const createProduct = (productData) => async (dispatch) => {
                 "Content-Type": "application/json"
             },
         };
-        const { data } = await axios.post("/api/v1/product/new", productData, config);
+        const { data } = await axios.post("/api/v1/admin/product/new", productData, config);
         dispatch({
             type: NEW_PRODUCT_SUCCESS,
             payload: data,
@@ -108,7 +108,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
                 "Content-Type": "application/json"
             },
         };
-        const { data } = await axios.put(`/api/v1/product/${id}`, productData, config);
+        const { data } = await axios.put(`/api/v1/admin/product/${id}`, productData, config);
         dispatch({
             type: UPDATE_PRODUCT_SUCCESS,
             payload: data.success,
@@ -116,7 +116,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: UPDATE_PRODUCT_FAILURE,
-            error: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 }
@@ -156,7 +156,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: PRODUCT_DETAILS_FAILURE,
-            error: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 };
@@ -180,7 +180,7 @@ export const newReview = (reviewData) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: NEW_REVIEW_FAILURE,
-            error: error.response.data.message,
+            payload: error.response.data.message,
         });
     }
 };
@@ -212,7 +212,7 @@ export const deleteReviews = (reviewId, productId) => async (dispatch) => {
         const { data } = await axios.delete(`/api/v1/reviews?id=${reviewId}&productId=${productId}`);
         dispatch({
             type: DELETE_REVIEW_SUCCESS,
-            payload: data.sucess
+            payload: data.success,
         });
     } catch (error) {
         dispatch({

@@ -43,14 +43,17 @@ export const Dashboard = () => {
             },
         ],
     };
-
+    let totalStock = 0;
+    if (products) {
+        totalStock = products.length;
+    }
     const doughnutState = {
         labels: ["Out of Stock", "InStock"],
         datasets: [
             {
                 backgroundColor: ["#00A6B4", "#6800B4"],
                 hoverBackgroundColor: ["#4B5000", "#35014F"],
-                data: [outOfStock, outOfStock],
+                data: [outOfStock, totalStock],
             },
         ],
     }
