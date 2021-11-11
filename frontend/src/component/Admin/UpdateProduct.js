@@ -10,8 +10,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, getProductDetails, updateProduct } from '../../actions/productAction';
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import { MetaData } from '../layout/MetaData';
-import { SideBar } from "./SideBar";
 import "./NewProduct.css";
+import { SideBar } from "./SideBar";
 
 export const UpdateProduct = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -102,7 +102,7 @@ export const UpdateProduct = ({ history, match }) => {
 
   return (
     <Fragment>
-      <MetaData title="Create Product" />
+      <MetaData title="Update Product" />
       <div className="dashboard">
         <SideBar />
         <div className="newProductContainer">
@@ -199,7 +199,7 @@ export const UpdateProduct = ({ history, match }) => {
               type="submit"
               disabled={loading ? true : false}
             >
-              Create
+              Update
             </Button>
           </form>
         </div>
