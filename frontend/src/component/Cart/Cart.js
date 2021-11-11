@@ -73,9 +73,9 @@ export const Cart = ({history}) => {
                                     )}`}</p>
                                 </div>
                                 <div></div>
-              <div className="checkOutBtn">
-                                    <button onClick={checkoutHandler}>Check Out</button>
-                                </div>
+                                    <div className="checkOutBtn">
+                                        <button onClick={checkoutHandler}>Check Out</button>
+                                    </div>
                             </div>
                         </div>
                     </Fragment>

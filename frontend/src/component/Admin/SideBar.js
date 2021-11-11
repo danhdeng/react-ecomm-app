@@ -22,16 +22,20 @@ export const SideBar = () => {
             <Link to="/admin/dashboard">
                 <DashboardIcon /> Dashboard
             </Link>
-            <TreeView defaultCollapseIcon={<ExpandMoreIcon />} defaultExpandIcon={<ImportExportIcon />}>
+            <Link>
+            <TreeView 
+                defaultCollapseIcon={<ExpandMoreIcon />} 
+                defaultExpandIcon={<ImportExportIcon />}>
                 <TreeItem nodeId="1" label="Products" >
                     <Link to="/admin/products">
-                        <TreeItem nodeId="2" label="All" icon={PostAddIcon} />
+                        <TreeItem nodeId="2" label="All" icon={<PostAddIcon />} />
                     </Link>
                     <Link to="/admin/product">
-                        <TreeItem nodeId="3" label="Create" icon={AddIcon} />
+                        <TreeItem nodeId="3" label="Create" icon={<AddIcon />} />
                     </Link>
                 </TreeItem>
             </TreeView>
+          </Link>
             <Link to="/admin/orders">
                 <p>
                     <ListAltIcon />

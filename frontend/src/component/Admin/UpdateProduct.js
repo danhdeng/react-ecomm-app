@@ -11,12 +11,13 @@ import { clearErrors, getProductDetails, updateProduct } from '../../actions/pro
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import { MetaData } from '../layout/MetaData';
 import { SideBar } from "./SideBar";
+import "./NewProduct.css";
 
 export const UpdateProduct = ({ history, match }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { error, product } = useSelector((state) => state.productDetails);
-  const { loading, error: updateError, isUpdated } = useSelector((state) => state.producto);
+  const { loading, error: updateError, isUpdated } = useSelector((state) => state.product);
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
@@ -106,11 +107,11 @@ export const UpdateProduct = ({ history, match }) => {
         <SideBar />
         <div className="newProductContainer">
           <form
-            className="newProdcutForm"
+            className="createProductForm"
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Update Product</h1>
             <div>
               <SpellcheckIcon />
               <input
