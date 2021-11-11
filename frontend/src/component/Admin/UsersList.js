@@ -112,7 +112,7 @@ export const UsersList = ({ history }) => {
   return (
     <Fragment>
       <MetaData title="ALL USERS -Admin" />
-      <div class="dashboard">
+      <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
           <h1 id="productListHeading">ALL USERS</h1>

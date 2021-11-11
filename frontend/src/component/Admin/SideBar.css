@@ -9,18 +9,18 @@
     padding: 0;
 }
 
-.sidebar > a >img:hover {
-    filter: drop-shadow(0 0 10px tomato)
+.sidebar > a > img:hover {
+    filter: drop-shadow(0 0 10px tomato);
 }
 
-.sidebar > img {
+.sidebar > a > img {
     width: 100%;
     transition: all 0.5s;    
 }
 
 .sidebar a {
     text-decoration: none;
-    color: rbga(0,0,0,0.493);
+    color: rgba(0,0,0,0.493);
     font: 200 1rem "Roboto";
     padding: 2rem;
     transition: all 0.5s;
@@ -31,12 +31,12 @@
     transform: scale(1.1);
 }
 
-.sidebar > a > p {
+.sidebar  a > p {
     display: flex;
     align-items: center;   
 }
 
-.sidebar > a > p >svg {
+.sidebar  a > p >svg {
     margin-right: 0.5rem;
 }
 

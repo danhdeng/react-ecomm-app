@@ -67,7 +67,10 @@ export const Cart = ({history}) => {
                                 <div></div>
                                 <div className="cartGrossProfitBox">
                                     <p>Gross Total</p>
-                                    <p>{`$${cartItems.reduce((acc, item)=>acc+item.price*item.quanity,0)}`}</p>
+                                    <p>{`$${cartItems.reduce(
+                                      (acc, item) => acc + item.quantity * item.price,
+                                      0
+                                    )}`}</p>
                                 </div>
                                 <div></div>
               <div className="checkOutBtn">

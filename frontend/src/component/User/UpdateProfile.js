@@ -1,13 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react'
-import './UpdateProfile.css';
-import { Loader } from '../layout/Loader/Loader';
-import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import FaceIcon from "@material-ui/icons/Face";
-import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, updateProfile, loadUser } from '../../actions/userAction';
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import React, { Fragment, useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearErrors, loadUser, updateProfile } from '../../actions/userAction';
 import { UPDATE_PROFILE_RESET } from '../../constants/userConstants';
+import { Loader } from '../layout/Loader/Loader';
 import { MetaData } from '../layout/MetaData';
+import './UpdateProfile.css';
 
 export const UpdateProfile = ({ history }) => {
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ export const UpdateProfile = ({ history }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [avatar, setAvatar] = useState();
-    const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+    const [avatarPreview, setAvatarPreview] = useState("../../images/Profile.png");
 
     const updateProfileSubmit = (e) => {
         e.preventDefault();

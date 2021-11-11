@@ -15,8 +15,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         email,
         password,
         avatar: {
-            public_id: "",
-            url: "",
+            public_id: "test_profile",
+            url: "../../images/Profile.png"
         },
     });
     sendToken(user, 201, res);
@@ -29,7 +29,7 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
 
     //check if the user has email and password
     if (!email || !password) {
-        return new ErrorHander('Please Enter Email and Password', 400);
+        return next(new ErrorHander('Please Enter Email and Password', 400));
     }
 
     const user = await User.findOne({ email }).select("+password");
@@ -162,8 +162,8 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
 
         //TODO: add new imageId and url
         newUserData.avatar = {
-            public_id: "",
-            user: ""
+            public_id: "test_profile",
+            url: "../../images/Profile.png"
         };
     }
 
@@ -178,9 +178,9 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     });
 });
 
-//Get all users --admin Only
+//Get all User --admin Only
 exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
-    const users = await Users.find();
+    const users = await User.find();
     res.status(200).json({
         success: true,
         users
@@ -189,7 +189,7 @@ exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
 
 //Get single user --admin Only
 exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
-    const user = await Users.find(req.params.id);
+    const user = await User.find(req.params.id);
     if (!user) {
         return next(new ErrorHandler(`User does not exist with id: ${req.params.id}`));
     }
@@ -207,10 +207,10 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
         role: req.body.role,
     };
 
-    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    const user = await User.findByIdAndUpdate(req.params.id, newUserData, {
         new: true,
         runValidators: true,
-        userFindAndModify: false,
+        useFindAndModify: false,
     });
 
     res.status(200).json({
@@ -222,9 +222,9 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
 
 //Delete  user --admin Only
 exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
-    const user = await Users.find(req.params.id);
+    const user = await User.find(req.params.id);
     if (!user) {
-        return next(new ErrorHandler(`User does not exist with id: ${req.params.id}`));
+        return next(new ErrorHandler(`User does not exist with id: ${req.params.id}`, 400));
     }
     const imageId = user.avatar.public_id;
     // TODO: remove images from user folder

@@ -9,7 +9,7 @@ export const Footer = () => {
         <footer id='footer'>
             <div className='leftFooter'>
                 <h4>DOWNLOAD OUR APP</h4>
-                <p>Download App for Andriod and IOS mobile phone</p>
+                <p>Download App for Android and IOS mobile phone</p>
                 <img src={playStore} alt="Playstore" />
                 <img src={appStore} alt="Appstore" />
             </div>

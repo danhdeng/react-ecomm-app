@@ -1,14 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
-import "./Products.css";
-import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, getProduct } from "../../actions/productAction";
-import { Loader } from "../layout/Loader/Loader";
-import { ProductCard } from "../Home/ProductCard";
-import { Pagination } from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
-import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
+import React, { Fragment, useEffect, useState } from "react";
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { clearErrors, getProduct } from "../../actions/productAction";
+import { ProductCard } from "../Home/ProductCard";
+import { Loader } from "../layout/Loader/Loader";
 import { MetaData } from "../layout/MetaData";
+import "./Products.css";
 
 const categories = [
   "Laptop",
@@ -114,7 +113,7 @@ export const Products = ({ match }) => {
               />
             </fieldset>
           </div>
-          {resultPerPage < count && (
+          {/* {resultPerPage < count && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
@@ -131,7 +130,7 @@ export const Products = ({ match }) => {
                 activeLinkClass="pageLinkActive"
               />
             </div>
-          )}
+          )} */}
         </Fragment>
       )}
     </Fragment>
