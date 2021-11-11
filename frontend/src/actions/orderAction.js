@@ -13,7 +13,7 @@ export const createOrder = (order) => async (dispatch) => {
     try {
         dispatch({ type: CREATE_ORDER_REQUEST });
         const config = {
-            Headers: {
+            headers: {
                 "Content-Type": "application/json",
             },
         };
@@ -53,7 +53,8 @@ export const myOrders = () => async (dispatch) => {
 export const getAllOrders = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_ORDERS_REQUEST });
-        const { data } = await axios.get("/api/v1/ordres");
+        const { data } = await axios.get("/api/v1/admin/orders");
+        console.log(data);
         dispatch({
             type: ALL_ORDERS_SUCCESS,
             payload: data.orders

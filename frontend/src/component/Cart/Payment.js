@@ -78,6 +78,7 @@ export const Payment = ({ history }) => {
                 },
             });
             if (result.error) {
+                console.log("result error: " + result.error);
                 payBtn.current.disabled = false;
                 alert.error(result.error.message);
             }
@@ -95,6 +96,7 @@ export const Payment = ({ history }) => {
                 }
             }
         } catch (error) {
+            console.log(error.response.data.message);
             payBtn.current.disabled = false;
             alert.error(error.response.data.message);
         }
