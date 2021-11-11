@@ -53,6 +53,7 @@ export const myOrders = () => async (dispatch) => {
 export const getAllOrders = () => async (dispatch) => {
     try {
         dispatch({ type: ALL_ORDERS_REQUEST });
+        console.log("get all order actions");
         const { data } = await axios.get("/api/v1/admin/orders");
         console.log(data);
         dispatch({
