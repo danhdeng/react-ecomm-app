@@ -17,8 +17,8 @@ export const UpdateProfile = ({ history }) => {
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [avatar, setAvatar] = useState("../../images/Profile.png");
-    const [avatarPreview, setAvatarPreview] = useState("../../images/Profile.png");
+    const [avatar, setAvatar] = useState("../../../images/Profile.png");
+    const [avatarPreview, setAvatarPreview] = useState("../../../images/Profile.png");
 
     const updateProfileSubmit = (e) => {
         e.preventDefault();

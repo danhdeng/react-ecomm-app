@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../../actions/userAction';
 import './Header.css';
+import profilePng from '../../../images/smile.png';
 
 
 export const UserOptions = ({ user }) => {
@@ -50,6 +51,7 @@ export const UserOptions = ({ user }) => {
         dispatch(logout());
         alert.success("Logout Successfully");
     }
+    console.log(user);
 
     return (
         <Fragment   >
@@ -63,13 +65,20 @@ export const UserOptions = ({ user }) => {
                 direction='down'
                 className="speedDial"
                 icon={
-                    <img
-                        className="speedDialIcon"
-                        src={user.avatar.url ? user.avatar.url : "../../images/Profile.png"}
-                        alt="Profile"
-                    />
-                }
-            >
+                    (user.avatar && user.avatar.url !== "") ?
+                        (<img
+                            className="speedDialIcon"
+                            src={user.avatar.url}
+                            alt="Profile"
+                        />)
+                        :
+                        (
+                            <img
+                                className="speedDialIcon"
+                                src={profilePng}
+                                alt="Profile"
+                            />
+                        )}>
                 {
                     options.map((item) => (
                         <SpeedDialAction
@@ -82,6 +91,6 @@ export const UserOptions = ({ user }) => {
                     ))
                 }
             </SpeedDial>
-        </Fragment>
+        </Fragment >
     );
 };

@@ -11,10 +11,12 @@ const user = require('./routes/userRoute');
 const order = require('./routes/orderRoute');
 const payment = require('./routes/paymentRoute');
 
+app.use('/images', express.static('images'));
+
 var corsOptions = {
-    origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 app.use(cors(corsOptions));
 

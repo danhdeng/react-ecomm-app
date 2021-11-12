@@ -5,21 +5,44 @@ const sendEmail = require('../utils/sendEmail');
 const jwtToken = require('../utils/jwtToken');
 const crypto = require('crypto');
 const sendToken = require('../utils/jwtToken');
+const multer = require("multer");
 
 //Register a new User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-    const { name, email, password } = req.body;
-
-    const user = await User.create({
-        name,
-        email,
-        password,
-        avatar: {
-            public_id: "test_profile",
-            url: "../../images/Profile.png"
-        },
+    const { name, email, password, file } = req.body;
+    //console.log(file);
+    console.log(req.body);
+    var storage = multer.diskStorage({
+        destination: "./images",
+        filename: function (req, file, cb) {
+            cb(null, Date.now() + '-' + file.originalname)
+        }
     });
-    sendToken(user, 201, res);
+
+    var upload = multer({ storage: storage }).single('profile_pic');
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            console.log(err);
+            return res.status(500).json(err)
+        } else if (err) {
+            console.log(err);
+            return res.status(500).json(err)
+        }
+    });
+    // const user = await User.create({
+    //     name,
+    //     email,
+    //     password,
+    //     avatar: {
+    //         public_id: "test_profile",
+    //         url: "../../../images/Profile.png"
+    //     },
+    // });
+    // sendToken(user, 201, res);
+
+    res.status(200).json({
+        success: true,
+    });
 });
 
 //login User
@@ -163,7 +186,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
         //TODO: add new imageId and url
         newUserData.avatar = {
             public_id: "test_profile",
-            url: "../../images/Profile.png"
+            url: "../../../images/Profile.png"
         };
     }
 
