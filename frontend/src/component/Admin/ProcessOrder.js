@@ -71,16 +71,15 @@ export const ProcessOrder = ({ history, match }) => {
                                     <Typography>Payment</Typography>
                                     <div className="orderDetailsContainerBox">
                                         <div>
-                                            <p className={
-                                                order.paymentInfo && order.paymentInfo.status === "succeeded"
-                                                    ? "greenColor"
-                                                    : "redColor"
-                                            }>
-                                                {
-                                                    order.paymentInfo && order.paymentInfo.status === "succeeded"
-                                                        ? "PAID"
-                                                        : "NOT PAID"
-                                                }
+                                          <p
+                                            className={
+                                              order.paymentInfo &&
+                                              order.paymentInfo.status === "succeeded"
+                                                ? "greenColor"
+                                                : "redColor"
+                                            }
+                                          >
+                                            {order.paymentInfo && (order.paymentInfo.status === "succeeded"? "PAID": "NOT PAID")}
                                             </p>
                                         </div>
                                         <div>

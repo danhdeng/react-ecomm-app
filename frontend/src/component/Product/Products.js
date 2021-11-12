@@ -5,6 +5,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import { ProductCard } from "../Home/ProductCard";
+import Pagination from "react-js-pagination";
 import { Loader } from "../layout/Loader/Loader";
 import { MetaData } from "../layout/MetaData";
 import "./Products.css";
@@ -113,7 +114,7 @@ export const Products = ({ match }) => {
               />
             </fieldset>
           </div>
-          {/* {resultPerPage < count && (
+          {resultPerPage < count && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
@@ -130,7 +131,7 @@ export const Products = ({ match }) => {
                 activeLinkClass="pageLinkActive"
               />
             </div>
-          )} */}
+          )}
         </Fragment>
       )}
     </Fragment>

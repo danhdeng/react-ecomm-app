@@ -55,10 +55,10 @@ export const OrderDetails = ({ match }) => {
                                         ? "greenColor"
                                         : "redColor"
                                 }>
-                                    order.paymentInfo &&
+                                    {order.paymentInfo &&
                                     order.paymentInfo.status ==="succeeded"
                                     ? "PAID"
-                                    : "NOT PAID"
+                                    : "NOT PAID"}
                                 </p>
                             </div>
                             <div>
@@ -70,8 +70,8 @@ export const OrderDetails = ({ match }) => {
                             <div className="orderDetailsContainerBox">
                                 <div>
                                     <p className={
-                                        order.paymentInfo &&
-                                            order.paymentInfo.status === "Delivered"
+                        
+                                            order.orderStatus && order.orderStatus === "Delivered"
                                             ? "greenColor"
                                             : "redColor"
                                     }>
