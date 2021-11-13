@@ -1,48 +1,65 @@
 const User = require('../models/userModel');
+const TestUser = require('../models/testModel');
+const mongoose = require('mongoose');
 const ErrorHandler = require('../utils/errorhandler');
 const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const sendEmail = require('../utils/sendEmail');
 const jwtToken = require('../utils/jwtToken');
 const crypto = require('crypto');
 const sendToken = require('../utils/jwtToken');
-const multer = require("multer");
+// const multer = require("multer");
+
+exports.registerUserFunc=catchAsyncErrors(async (req, res, next) => {
+    console.log("test register");
+    const { name, email, password } = req.body;
+    const url = req.protocol + '://' + req.get('host')
+    // const user = new TestUser({
+    //     _id: new mongoose.Types.ObjectId(),
+    //     name: req.body.name,
+    //     profileImg: url + '/images/user/' + req.file.filename
+    // });
+    // await user.save().then(result => {
+    //     res.status(201).json({
+    //         message: "User registered successfully!",
+    //         userCreated: {
+    //             _id: result._id,
+    //             profileImg: result.profileImg
+    //         }
+    //     })
+    // }).catch(err => {
+    //     console.log(err),
+    //         res.status(500).json({
+    //             error: err
+    //         });
+    // })
+     const user = await User.create({
+        name,
+        email,
+        password,
+        avatar: {
+            public_id: "test_profile",
+            url: url + '/images/user/' + req.file.filename
+        },
+    });
+    sendToken(user, 201, res);
+});
+
 
 //Register a new User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-    const { name, email, password, file } = req.body;
-    //console.log(file);
-    console.log(req.body);
-    var storage = multer.diskStorage({
-        destination: "./images",
-        filename: function (req, file, cb) {
-            cb(null, Date.now() + '-' + file.originalname)
-        }
+    console.log("test register");
+    const { name, email, password } = req.body;
+    const url = req.protocol + '://' + req.get('host')
+    const user = await User.create({
+        name,
+        email,
+        password,
+        avatar: {
+            public_id: "test_profile",
+            url: url + '/images/user/' + req.file.filename
+        },
     });
-
-    var upload = multer({ storage: storage }).single('profile_pic');
-    upload(req, res, function (err) {
-        if (err instanceof multer.MulterError) {
-            console.log(err);
-            return res.status(500).json(err)
-        } else if (err) {
-            console.log(err);
-            return res.status(500).json(err)
-        }
-    });
-    // const user = await User.create({
-    //     name,
-    //     email,
-    //     password,
-    //     avatar: {
-    //         public_id: "test_profile",
-    //         url: "../../../images/Profile.png"
-    //     },
-    // });
-    // sendToken(user, 201, res);
-
-    res.status(200).json({
-        success: true,
-    });
+    sendToken(user, 201, res);
 });
 
 //login User

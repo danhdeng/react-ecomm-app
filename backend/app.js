@@ -10,8 +10,8 @@ const product = require('./routes/productRoute');
 const user = require('./routes/userRoute');
 const order = require('./routes/orderRoute');
 const payment = require('./routes/paymentRoute');
+const test=require('./routes/testRoute');
 
-app.use('/images', express.static('images'));
 
 var corsOptions = {
   origin: 'http://localhost:3000',
@@ -23,11 +23,14 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(fileUpload());
+app.use('/images', express.static('images'));
+
+//app.use(fileUpload());
 app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
+app.use("/api/v1", test);
 
 
 //add error middleware for errors handling
