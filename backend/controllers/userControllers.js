@@ -10,7 +10,6 @@ const sendToken = require('../utils/jwtToken');
 // const multer = require("multer");
 
 exports.registerUserFunc=catchAsyncErrors(async (req, res, next) => {
-    console.log("test register");
     const { name, email, password } = req.body;
     const url = req.protocol + '://' + req.get('host')
     // const user = new TestUser({
@@ -47,7 +46,6 @@ exports.registerUserFunc=catchAsyncErrors(async (req, res, next) => {
 
 //Register a new User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-    console.log("test register");
     const { name, email, password } = req.body;
     const url = req.protocol + '://' + req.get('host')
     const user = await User.create({

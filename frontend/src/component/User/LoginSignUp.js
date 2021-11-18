@@ -31,7 +31,8 @@ export const LoginSignUp = ({ history, location }) => {
 
 
   const handleFileChange = (event) => {
-    setFile(event.target.files);
+    registerDataChange(event);
+    setFile(event.target.files[0]);
     console.log(file)
   }
 
@@ -53,7 +54,7 @@ export const LoginSignUp = ({ history, location }) => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    myForm.set("profile_pic", file);
+    myForm.set("profileImg", file);
     dispatch(register(myForm));
   }
 
@@ -182,7 +183,7 @@ export const LoginSignUp = ({ history, location }) => {
                     <img src={avatarPreview} alt="Avatar Preview" />
                     <input
                       type="file"
-                      name="file"
+                      name="avatar"
                       accept="image/*"
                       onChange={handleFileChange}
                     />
