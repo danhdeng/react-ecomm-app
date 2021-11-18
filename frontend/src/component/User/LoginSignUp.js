@@ -77,7 +77,7 @@ export const LoginSignUp = ({ history, location }) => {
   const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
-    if (error) {
+    if (isAuthenticated && error) {
       alert.error(error);
       dispatch(clearErrors());
     }

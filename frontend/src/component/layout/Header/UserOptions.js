@@ -10,8 +10,8 @@ import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../../actions/userAction';
-import './Header.css';
 import profilePng from '../../../images/smile.png';
+import './Header.css';
 
 
 export const UserOptions = ({ user }) => {
