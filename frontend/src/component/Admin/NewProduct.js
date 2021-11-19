@@ -52,6 +52,7 @@ export const NewProduct = ({ history }) => {
         myForm.set("description", description);
         myForm.set("category", category);
         myForm.set("stock", stock);
+        myForm.set("imgCollection", images);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -60,23 +61,25 @@ export const NewProduct = ({ history }) => {
   };
 
   const createProductImagesChange = (e) => {
-    const files = Array.from(e.target.files);
+    // const files = Array.from(e.target.files);
+    // console.log(e.target.files);
+    // setImages([]);
+    // setImagesPreview([]);
 
-    setImages([]);
-    setImagesPreview([]);
+    //files.forEach((file) => {
+    const file=e.target.files[0];  
+    const reader = new FileReader();
 
-    files.forEach((file) => {
-      const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImagesPreview((old) => [...old, reader.result]);
+        setImages((old) => [...old, e.target.files[0]]);
+      }
+    };
 
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setImagesPreview((old) => [...old, reader.result]);
-          setImages((old) => [...old, reader.result]);
-        }
-      };
-
-      reader.readAsDataURL(file);
-    });
+    reader.readAsDataURL(file);
+    console.log(images);
+    //});
   };
 
   return (

@@ -51,7 +51,6 @@ export const UserOptions = ({ user }) => {
         dispatch(logout());
         alert.success("Logout Successfully");
     }
-    console.log(user);
 
     return (
         <Fragment   >
